@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MetaStrip — No More AI Metadata</title>
+<meta name="description" content="Drop an image. MetaStrip removes EXIF, XMP, C2PA and AI generation metadata (prompts, workflows, seeds). Clean file ready in seconds. 100% in your browser.">
+<style>
+  :root{
+    --bg:#050807; --panel:#0b100d; --panel2:#0e1511; --line:#1d2b21;
+    --green:#22e584; --green2:#12b76a; --text:#e8f5ec; --muted:#8fa398;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:
+      radial-gradient(900px 480px at 50% -120px, rgba(34,229,132,.14), transparent 60%),
+      radial-gradient(700px 400px at 85% 110%, rgba(18,183,106,.08), transparent 60%),
+      var(--bg);
+    color:var(--text); font-family:ui-sans-system,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:22px 16px 40px}
+  a{color:var(--green); text-decoration:none}
+  header{width:100%; max-width:880px; display:flex; justify-content:space-between; align-items:center}
+  .logo{font-weight:800; font-size:20px; letter-spacing:.2px}
+  .logo span{color:var(--green)}
+  .gh{border:1px solid var(--line); padding:8px 14px; border-radius:999px; color:var(--text); font-size:14px; background:var(--panel)}
+  .gh:hover{border-color:var(--green2)}
+  main{width:100%; max-width:880px; text-align:center; margin-top:44px}
+  h1{font-size:clamp(38px,7vw,64px); line-height:1.05; font-weight:900; letter-spacing:-1px}
+  h1 .grad{background:linear-gradient(92deg,#22e584,#7CFFB2); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .sub{color:var(--muted); font-size:clamp(15px,2.6vw,19px); margin:16px auto 0; max-width:620px}
+  .steps{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:28px 0 22px}
+  .step{border:1px solid var(--line); background:var(--panel); border-radius:999px; padding:9px 16px; font-size:14px; font-weight:600}
+  .step b{color:var(--green)}
+  .arrow{align-self:center; color:var(--muted)}
+  #drop{border:2px dashed #2c4634; border-radius:22px; background:linear-gradient(180deg,var(--panel2),var(--panel));
+    padding:52px 20px; cursor:pointer; transition:.18s; outline:none}
+  #drop:hover,#drop:focus{border-color:var(--green2)}
+  #drop.over{border-color:var(--green); box-shadow:0 0 0 4px rgba(34,229,132,.15), 0 0 60px rgba(34,229,132,.18) inset; transform:scale(1.01)}
+  #drop .big{font-size:52px}
+  #drop h2{font-size:24px; margin-top:10px}
+  #drop p{color:var(--muted); margin-top:8px; font-size:15px}
+  .btn{display:inline-block; margin-top:18px; background:var(--green); color:#04120a; font-weight:800;
+    padding:13px 28px; border-radius:999px; font-size:16px; border:none; cursor:pointer}
+  .btn:hover{background:#35f093}
+  .formats{color:var(--muted); font-size:13px; margin-top:14px}
+  #results{width:100%; max-width:880px; margin-top:26px; display:flex; flex-direction:column; gap:14px}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:16px; display:flex; gap:16px; align-items:flex-start; text-align:left}
+  .card img{width:76px; height:76px; object-fit:cover; border-radius:12px; border:1px solid var(--line); background:#000}
+  .card .body{flex:1; min-width:0}
+  .card .name{font-weight:700; word-break:break-all}
+  .card .sizes{color:var(--muted); font-size:13px; margin-top:3px}
+  .chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:9px}
+  .chip{font-size:12px; border:1px solid #35543f; color:#b9f4d2; background:#0f2016; padding:4px 9px; border-radius:999px}
+  .chip.safe{border-color:var(--line); color:var(--muted); background:transparent}
+  .status{margin-top:10px; font-weight:700}
+  .status.done{color:var(--green)}
+  .status.err{color:#ff7b72}
+  .spin{display:inline-block; animation:rot 1s linear infinite}
+  @keyframes rot{to{transform:rotate(360deg)}}
+  .dl{background:var(--green); color:#04120a; font-weight:800; border:none; border-radius:12px; padding:12px 18px; cursor:pointer; font-size:15px; white-space:nowrap}
+  .dl:hover{background:#35f093}
+  footer{max-width:880px; color:var(--muted); font-size:13px; text-align:center; margin-top:38px; line-height:1.7}
+  footer .lock{color:#cfe9d8}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🧹 Meta<span>Strip</span></div>
+  <a class="gh" href="https://github.com/WeakCoderAsh/metastrip" target="_blank" rel="noopener">⭐ GitHub</a>
+</header>
+
+<main>
+  <h1>No More <span class="grad">AI Metadata.</span></h1>
+  <p class="sub">Drop an image — MetaStrip removes the hidden data inside it: EXIF, prompts, workflows, seeds, C2PA. Clean file ready in seconds.</p>
+
+  <div class="steps">
+    <div class="step"><b>1</b> 📥 &nbsp;Drop Image</div><div class="arrow">→</div>
+    <div class="step"><b>2</b> ⚙️ &nbsp;Auto Process</div><div class="arrow">→</div>
+    <div class="step"><b>3</b> 💥 &nbsp;Boom! Clean Ready</div>
+  </div>
+
+  <div id="drop" tabindex="0" role="button" aria-label="Drop image or tap to choose">
+    <div class="big">🖼️</div>
+    <h2>Drag &amp; drop your image here</h2>
+    <p>or</p>
+    <button class="btn" id="pickBtn" type="button">Choose Image</button>
+    <div class="formats">JPG · PNG · WebP — one or many, all processed automatically</div>
+    <input type="file" id="fileInput" accept="image/*" multiple hidden>
+  </div>
+
+  <div id="results"></div>
+</main>
+
+<footer>
+  <p class="lock">🔒 100% private — everything runs in your browser. Your images never leave your device.</p>
+  <p>Honest note: pixel-level invisible watermarks (like SynthID) live inside the pixels, not in metadata — no metadata tool can remove those.</p>
+  <p>MetaStrip · <a href="https://github.com/WeakCoderAsh/metastrip">Open source on GitHub</a></p>
+</footer>
+
+<script>
+const drop = document.getElementById('drop');
+const input = document.getElementById('fileInput');
+const results = document.getElementById('results');
+document.getElementById('pickBtn').addEventListener('click', e => { e.stopPropagation(); input.click(); });
+drop.addEventListener('click', () => input.click());
+drop.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); input.click(); } });
+['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+drop.addEventListener('drop', e => handleFiles(e.dataTransfer.files));
+input.addEventListener('change', () => { handleFiles(input.files); input.value = ''; });
+
+function fmt(n){ if(n>1048576) return (n/1048576).toFixed(2)+' MB'; if(n>1024) return (n/1024).toFixed(1)+' KB'; return n+' B'; }
+function latin1(buf){ const u=new Uint8Array(buf); let s=''; const CH=32768; for(let i=0;i<u.length;i+=CH){ s+=String.fromCharCode.apply(null,u.subarray(i,i+CH)); } return s; }
+
+function scan(buf, type){
+  const found = new Set();
+  const u = new Uint8Array(buf);
+  const text = latin1(buf);
+  // PNG chunks
+  if (u.length > 8 && u[0]===0x89 && u[1]===0x50){
+    let off = 8;
+    while (off + 12 <= u.length){
+      const len = new DataView(buf).getUint32(off);
+      const ctype = String.fromCharCode(u[off+4],u[off+5],u[off+6],u[off+7]);
+      if (ctype==='tEXt' || ctype==='zTXt' || ctype==='iTXt'){
+        let kw=''; for(let i=off+8;i<Math.min(off+8+len,u.length) && u[i]!==0;i++) kw+=String.fromCharCode(u[i]);
+        found.add('PNG text: '+(kw||'chunk'));
+      }
+      if (ctype==='eXIf') found.add('EXIF data');
+      if (ctype==='iCCP') found.add('ICC profile');
+      if (ctype==='tIME') found.add('PNG timestamp');
+      if (ctype==='IEND' || len > u.length) break;
+      off += 12 + len;
+    }
+  }
+  // JPEG markers
+  if (u.length > 2 && u[0]===0xFF && u[1]===0xD8){
+    let off = 2;
+    while (off + 4 <= u.length){
+      if (u[off] !== 0xFF) break;
+      const marker = u[off+1];
+      if (marker === 0xDA) break; // SOS — scan data starts
+      const len = (u[off+2]<<8) + u[off+3];
+      const seg = text.slice(off+4, off+2+len);
+      if (marker === 0xE1 && seg.startsWith('Exif')) found.add('EXIF data');
+      if (marker === 0xE1 && seg.includes('xap/1.0')) found.add('XMP metadata');
+      if (marker === 0xE2 && seg.includes('ICC_PROFILE')) found.add('ICC profile');
+      if (marker === 0xEB) found.add('C2PA (JUMBF)');
+      if (marker === 0xFE) found.add('JPEG comment');
+      if (len < 2) break;
+      off += 2 + len;
+    }
+  }
+  // WebP chunks
+  if (text.slice(0,4)==='RIFF' && text.slice(8,12)==='WEBP'){
+    if (text.includes('EXIF')) found.add('EXIF data');
+    if (text.includes('XMP ')) found.add('XMP metadata');
+    if (text.includes('ICCP')) found.add('ICC profile');
+  }
+  if (/c2pa/i.test(text)) found.add('C2PA Content Credentials');
+  if (text.includes('<x:xmpmeta')) found.add('XMP metadata');
+  return [...found];
+}
+
+async function handleFiles(fileList){
+  for (const file of fileList){
+    if (!file.type.startsWith('image/')) continue;
+    await processFile(file);
+  }
+}
+
+async function processFile(file){
+  const card = document.createElement('div');
+  card.className = 'card';
+  const thumb = URL.createObjectURL(file);
+  card.innerHTML = `<img src="${thumb}" alt="">
+    <div class="body">
+      <div class="name"></div>
+      <div class="sizes">${fmt(file.size)} · scanning…</div>
+      <div class="chips"></div>
+      <div class="status"><span class="spin">⚙️</span> Processing…</div>
+    </div>`;
+  card.querySelector('.name').textContent = file.name;
+  results.prepend(card);
+  const chipsEl = card.querySelector('.chips');
+  const statusEl = card.querySelector('.status');
+  const sizesEl = card.querySelector('.sizes');
+  try{
+    const buf = await file.arrayBuffer();
+    const found = scan(buf, file.type);
+    chipsEl.innerHTML = found.length
+      ? found.map(f => `<span class="chip">🧹 ${f}</span>`).join('')
+      : '<span class="chip safe">No metadata found — already clean</span>';
+
+    let bmp;
+    try { bmp = await createImageBitmap(file, { imageOrientation: 'from-image' }); }
+    catch(e){ bmp = await createImageBitmap(file); }
+    const canvas = document.createElement('canvas');
+    canvas.width = bmp.width; canvas.height = bmp.height;
+    canvas.getContext('2d').drawImage(bmp, 0, 0);
+
+    const okTypes = ['image/jpeg','image/png','image/webp'];
+    const outType = okTypes.includes(file.type) ? file.type : 'image/png';
+    const ext = outType === 'image/png' ? 'png' : outType === 'image/webp' ? 'webp' : 'jpg';
+    const blob = await new Promise(r => canvas.toBlob(r, outType, 0.95));
+    if (!blob) throw new Error('encode failed');
+
+    const outBuf = await blob.arrayBuffer();
+    const left = scan(outBuf, outType);
+    const base = file.name.replace(/\.[^.]+$/, '');
+    const url = URL.createObjectURL(blob);
+    sizesEl.textContent = `${fmt(file.size)} → ${fmt(blob.size)} · ${bmp.width}×${bmp.height}`;
+    if (left.length === 0){
+      statusEl.className = 'status done';
+      statusEl.textContent = '💥 Boom! Clean Image Ready ✅';
+    } else {
+      statusEl.className = 'status';
+      statusEl.textContent = 'Cleaned ✅ (still present: ' + left.join(', ') + ')';
+    }
+    const btn = document.createElement('button');
+    btn.className = 'dl'; btn.textContent = '⬇ Download';
+    btn.addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.href = url; a.download = base + '_clean.' + ext; a.click();
+    });
+    card.appendChild(btn);
+  }catch(err){
+    statusEl.className = 'status err';
+    statusEl.textContent = '⚠ Could not process this image in the browser.';
+    sizesEl.textContent = fmt(file.size);
+  }
+}
+</script>
+</body>
+</html>
