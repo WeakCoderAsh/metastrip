@@ -1,0 +1,7 @@
+__pycache__/
+*_clean.jpg
+*_clean.jpeg
+*_clean.png
+*_clean.webp
+cleaned/
+.DS_Store
