@@ -40,13 +40,15 @@
   .step{border:1px solid var(--line); background:var(--panel); border-radius:999px; padding:9px 16px; font-size:14px; font-weight:600}
   .step b{color:var(--green)}
   .arrow{align-self:center; color:var(--muted)}
-  #drop{border:2px dashed #2c4634; border-radius:22px; background:linear-gradient(180deg,var(--panel2),var(--panel));
-    padding:52px 20px; cursor:pointer; transition:.18s; outline:none}
-  #drop:hover,#drop:focus{border-color:var(--green2)}
-  #drop.over{border-color:var(--green); box-shadow:0 0 0 4px rgba(34,229,132,.15), 0 0 60px rgba(34,229,132,.18) inset; transform:scale(1.01)}
-  #drop .big{font-size:52px}
-  #drop h2{font-size:24px; margin-top:10px}
-  #drop p{color:var(--muted); margin-top:8px; font-size:15px}
+  .tools{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media(max-width:720px){.tools{grid-template-columns:1fr}}
+  .drop{border:2px dashed #2c4634; border-radius:22px; background:linear-gradient(180deg,var(--panel2),var(--panel));
+    padding:38px 18px; cursor:pointer; transition:.18s; outline:none}
+  .drop:hover,.drop:focus{border-color:var(--green2)}
+  .drop.over{border-color:var(--green); box-shadow:0 0 0 4px rgba(34,229,132,.15), 0 0 60px rgba(34,229,132,.18) inset; transform:scale(1.01)}
+  .drop .big{font-size:48px}
+  .drop h2{font-size:23px; margin-top:10px}
+  .drop p{color:var(--muted); margin-top:8px; font-size:15px}
   .btn{display:inline-block; margin-top:18px; background:var(--green); color:#04120a; font-weight:800;
     padding:13px 28px; border-radius:999px; font-size:16px; border:none; cursor:pointer}
   .btn:hover{background:#35f093}
@@ -121,13 +123,23 @@
     <div class="step"><b>3</b> 💥 &nbsp;Boom! Clean Ready</div>
   </div>
 
-  <div id="drop" tabindex="0" role="button" aria-label="Drop photo or video or tap to choose">
-    <div class="big">🧹</div>
-    <h2>Drag &amp; drop your photo / video here</h2>
-    <p>or</p>
-    <button class="btn" id="pickBtn" type="button">Choose Files</button>
-    <div class="formats">JPG · PNG · WebP · MP4 · MOV — ek ya kai files ek saath, sab auto-saaf + ZIP download</div>
-    <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime,.mp4,.mov,.m4v" multiple hidden>
+  <div class="tools">
+    <div class="drop" id="dropPhoto" tabindex="0" role="button" aria-label="Drop photo or tap to choose">
+      <div class="big">🖼️</div>
+      <h2>Photo dalo</h2>
+      <p>Photo ka AI tag saaf karne ke liye</p>
+      <button class="btn" id="pickPhoto" type="button">Choose Photo</button>
+      <div class="formats">JPG · PNG · WebP — ek ya kai photo ek saath</div>
+      <input type="file" id="filePhoto" accept="image/jpeg,image/png,image/webp" multiple hidden>
+    </div>
+    <div class="drop" id="dropVideo" tabindex="0" role="button" aria-label="Drop video or tap to choose">
+      <div class="big">🎬</div>
+      <h2>Video dalo</h2>
+      <p>Video ka metadata saaf karne ke liye</p>
+      <button class="btn" id="pickVideo" type="button">Choose Video</button>
+      <div class="formats">MP4 · MOV — quality bilkul waisi ki waisi</div>
+      <input type="file" id="fileVideo" accept="video/mp4,video/quicktime,.mp4,.mov,.m4v" multiple hidden>
+    </div>
   </div>
 
   <div id="batchbar">
@@ -174,7 +186,7 @@
     <div class="faq">
       <div class="qa">
         <h3>📥 Step 1 — Files dalo</h3>
-        <p>Upar wale bade box me apni AI photo ya video drag karo ya <b>Choose Files</b> dabao. JPG, PNG, WebP, MP4, MOV — <b>ek saath kai files</b> dal sakte ho, sab ek-ek karke apne aap saaf hongi.</p>
+        <p>Upar <b>do alag box</b> hain — photo ke liye <b>Photo wala box</b>, video ke liye <b>Video wala box</b>. Apni file sahi box me drag karo ya button dabao. JPG, PNG, WebP, MP4, MOV — <b>ek saath kai files</b> dal sakte ho, sab ek-ek karke apne aap saaf hongi.</p>
       </div>
       <div class="qa">
         <h3>⚙️ Step 2 — Auto clean</h3>
@@ -375,8 +387,6 @@ function makeZipBytes(entries){
 </script>
 
 <script>
-const drop = document.getElementById('drop');
-const input = document.getElementById('fileInput');
 const results = document.getElementById('results');
 const batchbar = document.getElementById('batchbar');
 const batchtext = document.getElementById('batchtext');
@@ -384,13 +394,19 @@ const zipBtn = document.getElementById('zipBtn');
 const cleanedFiles = []; // {name, blob}
 let pendingCount = 0;
 
-document.getElementById('pickBtn').addEventListener('click', e => { e.stopPropagation(); input.click(); });
-drop.addEventListener('click', () => input.click());
-drop.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); input.click(); } });
-['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
-['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
-drop.addEventListener('drop', e => handleFiles(e.dataTransfer.files));
-input.addEventListener('change', () => { handleFiles(input.files); input.value = ''; });
+function setupDrop(boxId, inputId, btnId){
+  const box = document.getElementById(boxId);
+  const inp = document.getElementById(inputId);
+  document.getElementById(btnId).addEventListener('click', e => { e.stopPropagation(); inp.click(); });
+  box.addEventListener('click', () => inp.click());
+  box.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); inp.click(); } });
+  ['dragenter','dragover'].forEach(ev => box.addEventListener(ev, e => { e.preventDefault(); box.classList.add('over'); }));
+  ['dragleave','drop'].forEach(ev => box.addEventListener(ev, e => { e.preventDefault(); box.classList.remove('over'); }));
+  box.addEventListener('drop', e => handleFiles(e.dataTransfer.files));
+  inp.addEventListener('change', () => { handleFiles(inp.files); inp.value = ''; });
+}
+setupDrop('dropPhoto', 'filePhoto', 'pickPhoto');
+setupDrop('dropVideo', 'fileVideo', 'pickVideo');
 const demoBtn = document.getElementById('demoBtn');
 if (demoBtn) demoBtn.addEventListener('click', async () => {
   demoBtn.disabled = true; demoBtn.textContent = '⏳ Example chal raha hai…';
@@ -398,7 +414,7 @@ if (demoBtn) demoBtn.addEventListener('click', async () => {
     const res = await fetch('demo-ai-photo.png');
     const blob = await res.blob();
     const f = new File([blob], 'demo-ai-photo.png', { type: 'image/png' });
-    document.getElementById('drop').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.getElementById('dropPhoto').scrollIntoView({ behavior: 'smooth', block: 'center' });
     await processFile(f);
   }catch(e){
     alert('Example load nahi ho paya — apni photo daal kar try karo.');
