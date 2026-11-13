@@ -1,6 +1,6 @@
 <h1 align="center">🧹 TagHatao</h1>
 
-<p align="center"><em>India's free AI Tag Remover — remove AI tags &amp; metadata from photos, in one clean pass.</em></p>
+<p align="center"><em>India's free AI Tag Remover — remove AI tags &amp; metadata from photos and videos, in one clean pass.</em></p>
 
 <p align="center">AI Tag Remover · AI Metadata Remover · AI Label Remover · Photo Se AI Tag Hataye</p>
 
@@ -21,6 +21,7 @@
 - **XMP / IPTC**
 - **C2PA / Content Credentials** manifests embedded in the file
 - **ICC profiles**, JPEG comments, and other ancillary chunks
+- **Video metadata** (web UI, MP4/MOV) — title, artist, encoder tags, XMP and C2PA boxes inside the file
 
 ## How it works
 
@@ -28,7 +29,8 @@ TagHatao re-encodes **only the pixels** into a brand-new file. Metadata is never
 
 - ✅ Your original file is never modified — output is always a new `_clean` file
 - ✅ Works completely offline, no uploads anywhere
-- ✅ Batch mode for whole folders
+- ✅ Batch mode for whole folders (CLI) — and on the web: many files at once + one ZIP download
+- ✅ Videos are never re-encoded — only the metadata boxes are neutralized, so quality stays 100% identical
 
 ## Usage
 
@@ -57,7 +59,8 @@ Supported formats: **JPG, PNG, WebP, BMP, TIFF**
 ## Roadmap
 
 - [x] Drag & drop web UI (runs 100% in your browser) — live at https://weakcoderash.github.io/taghatao/
-- [ ] Video metadata support
+- [x] Batch cleaning + ZIP download on the web UI
+- [x] Video metadata support (MP4/MOV, web UI)
 
 ## License
 

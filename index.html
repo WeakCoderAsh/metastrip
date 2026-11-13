@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TagHatao — AI Tag Remover | Photo Se AI Tag & Metadata Hataye (Free Online)</title>
-<meta name="description" content="TagHatao — India's free AI tag remover. Remove AI tags, C2PA, EXIF and metadata from photos online. Photo se AI tag hataye seconds me — no upload, no sign-up, 100% in your browser.">
+<title>TagHatao — AI Tag Remover | Photo & Video Se AI Tag & Metadata Hataye (Free Online)</title>
+<meta name="description" content="TagHatao — India's free AI tag remover. Remove AI tags, C2PA, EXIF and metadata from photos AND videos online. Batch clean, ZIP download, no limit — photo/video se AI tag hataye seconds me, no upload, no sign-up, 100% in your browser.">
 <meta property="og:title" content="TagHatao — AI Tag Remover (Free, Online)">
-<meta property="og:description" content="Photo se AI tag aur metadata hataye — free, bina upload, bina sign-up. India's own AI tag remover.">
+<meta property="og:description" content="Photo aur video se AI tag aur metadata hataye — batch me, ZIP ke sath, free, bina upload, bina sign-up. India's own AI tag remover.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://weakcoderash.github.io/taghatao/">
 <link rel="canonical" href="https://weakcoderash.github.io/taghatao/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧹</text></svg>">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"TagHatao — AI Tag Remover","url":"https://weakcoderash.github.io/taghatao/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Free online AI tag remover and AI metadata remover. Remove AI tags, C2PA, EXIF and prompts from photos in your browser."}
+{"@context":"https://schema.org","@type":"WebApplication","name":"TagHatao — AI Tag Remover","url":"https://weakcoderash.github.io/taghatao/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Free online AI tag remover and AI metadata remover. Remove AI tags, C2PA, EXIF and prompts from photos and videos in your browser. Batch processing with ZIP download, no limits."}
 </script>
 <style>
   :root{
@@ -51,9 +51,18 @@
     padding:13px 28px; border-radius:999px; font-size:16px; border:none; cursor:pointer}
   .btn:hover{background:#35f093}
   .formats{color:var(--muted); font-size:13px; margin-top:14px}
+  #batchbar{display:none; width:100%; max-width:880px; margin-top:18px; background:linear-gradient(180deg,var(--panel2),var(--panel));
+    border:1px solid var(--green2); border-radius:16px; padding:14px 16px; align-items:center; gap:14px; flex-wrap:wrap; text-align:left}
+  #batchbar.show{display:flex}
+  #batchbar .binfo{flex:1; font-weight:700; min-width:200px}
+  #batchbar .binfo small{display:block; color:var(--muted); font-weight:500; margin-top:2px}
+  .zipbtn{background:var(--green); color:#04120a; font-weight:800; border:none; border-radius:12px; padding:13px 20px; cursor:pointer; font-size:15px; white-space:nowrap}
+  .zipbtn:hover{background:#35f093}
+  .zipbtn:disabled{background:#1d2b21; color:var(--muted); cursor:default}
   #results{width:100%; max-width:880px; margin-top:26px; display:flex; flex-direction:column; gap:14px}
   .card{background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:16px; display:flex; gap:16px; align-items:flex-start; text-align:left}
-  .card img{width:76px; height:76px; object-fit:cover; border-radius:12px; border:1px solid var(--line); background:#000}
+  .card img,.card video{width:76px; height:76px; object-fit:cover; border-radius:12px; border:1px solid var(--line); background:#000}
+  .card .vthumb{width:76px; height:76px; border-radius:12px; border:1px solid var(--line); background:#000; display:flex; align-items:center; justify-content:center; font-size:34px; flex:none}
   .card .body{flex:1; min-width:0}
   .card .name{font-weight:700; word-break:break-all}
   .card .sizes{color:var(--muted); font-size:13px; margin-top:3px}
@@ -101,24 +110,29 @@
 
 <main>
   <h1>Photo Se <span class="grad">AI Tag Hatao.</span></h1>
-  <p class="sub">India ka apna <b>free AI Tag Remover</b> — AI photo dalo, saare chhupe AI tags aur metadata saaf. Clean photo, seconds me.</p>
+  <p class="sub">India ka apna <b>free AI Tag Remover</b> — photo ya video dalo, saare chhupe AI tags aur metadata saaf. <b>Koi limit nahi</b> — ek saath kai files, ZIP download ke sath.</p>
   <div class="trust">
-    <span>✅ Free Forever</span><span>🚫 No Sign-up</span><span>🔒 No Upload — photo phone se bahar nahi jati</span><span>🇮🇳 Made for India</span>
+    <span>✅ Free Forever — No Limit</span><span>🚫 No Sign-up</span><span>🎬 Photo + Video</span><span>🔒 No Upload — file phone se bahar nahi jati</span><span>🇮🇳 Made for India</span>
   </div>
 
   <div class="steps">
-    <div class="step"><b>1</b> 📥 &nbsp;Drop Image</div><div class="arrow">→</div>
+    <div class="step"><b>1</b> 📥 &nbsp;Drop Files</div><div class="arrow">→</div>
     <div class="step"><b>2</b> ⚙️ &nbsp;Auto Process</div><div class="arrow">→</div>
     <div class="step"><b>3</b> 💥 &nbsp;Boom! Clean Ready</div>
   </div>
 
-  <div id="drop" tabindex="0" role="button" aria-label="Drop image or tap to choose">
-    <div class="big">🖼️</div>
-    <h2>Drag &amp; drop your image here</h2>
+  <div id="drop" tabindex="0" role="button" aria-label="Drop photo or video or tap to choose">
+    <div class="big">🧹</div>
+    <h2>Drag &amp; drop your photo / video here</h2>
     <p>or</p>
-    <button class="btn" id="pickBtn" type="button">Choose Image</button>
-    <div class="formats">JPG · PNG · WebP — one or many, all processed automatically</div>
-    <input type="file" id="fileInput" accept="image/*" multiple hidden>
+    <button class="btn" id="pickBtn" type="button">Choose Files</button>
+    <div class="formats">JPG · PNG · WebP · MP4 · MOV — ek ya kai files ek saath, sab auto-saaf + ZIP download</div>
+    <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime,.mp4,.mov,.m4v" multiple hidden>
+  </div>
+
+  <div id="batchbar">
+    <div class="binfo"><span id="batchtext">Taiyaari ho rahi hai…</span><small>Har file alag se bhi download ho sakti hai — ya saari ek ZIP me.</small></div>
+    <button class="zipbtn" id="zipBtn" type="button" disabled>⬇ Saari Clean Files — ZIP</button>
   </div>
 
   <div id="results"></div>
@@ -137,7 +151,7 @@
       <div class="scard">
         <div class="ic">🧹✨</div>
         <h3>2 · TagHatao Clean</h3>
-        <p>Photo yahan dalo — AI tag, C2PA, EXIF, prompt, sab metadata seconds me saaf.</p>
+        <p>Photo ya video yahan dalo — AI tag, C2PA, EXIF, prompt, sab metadata seconds me saaf.</p>
         <span class="badge grey">⚙️ Auto process</span>
       </div>
       <div class="sarrow">➜</div>
@@ -156,41 +170,220 @@
 
   <section class="block" id="guide">
     <h2>Photo se AI tag <span class="grad">kaise hataye?</span></h2>
-    <p class="lead">Bas 3 step — koi app nahi, koi sign-up nahi.</p>
+    <p class="lead">Bas 3 step — koi app nahi, koi sign-up nahi, koi limit nahi.</p>
     <div class="faq">
       <div class="qa">
-        <h3>📥 Step 1 — Photo dalo</h3>
-        <p>Upar wale bade box me apni AI photo drag karo ya <b>Choose Image</b> dabao. JPG, PNG, WebP — ek ya zyada, sab chalega.</p>
+        <h3>📥 Step 1 — Files dalo</h3>
+        <p>Upar wale bade box me apni AI photo ya video drag karo ya <b>Choose Files</b> dabao. JPG, PNG, WebP, MP4, MOV — <b>ek saath kai files</b> dal sakte ho, sab ek-ek karke apne aap saaf hongi.</p>
       </div>
       <div class="qa">
         <h3>⚙️ Step 2 — Auto clean</h3>
-        <p>Process khud shuru hota hai. TagHatao photo ke andar chhupe <b>AI tags, C2PA Content Credentials, EXIF, GPS, prompt aur workflow</b> — sab metadata saaf kar deta hai, aur clean file ko dobara scan karke verify bhi karta hai.</p>
+        <p>Process khud shuru hota hai. TagHatao file ke andar chhupe <b>AI tags, C2PA Content Credentials, EXIF, GPS, prompt aur workflow</b> — sab metadata saaf kar deta hai, aur clean file ko dobara scan karke verify bhi karta hai. Video me quality bilkul nahi badalti — sirf metadata wala hissa saaf hota hai.</p>
       </div>
       <div class="qa">
         <h3>💥 Step 3 — Download aur upload</h3>
-        <p><b>"Boom! Clean Image Ready"</b> aate hi Download dabao. Ab ye saaf photo Instagram, Facebook, YouTube — jahan chaho upload karo.</p>
+        <p><b>"Boom! Clean Ready"</b> aate hi Download dabao — ya kai files hain to upar wala <b>ZIP button</b> dabao, saari clean files ek hi ZIP me mil jayengi. Ab saaf files Instagram, Facebook, YouTube — jahan chaho upload karo.</p>
       </div>
       <div class="qa">
         <h3>❓ Instagram par "AI info" label kyun aata hai?</h3>
         <p>Jab tum ChatGPT, Gemini ya kisi AI tool se photo banate/edit karte ho, wo tool file ke andar <b>C2PA aur IPTC AI tags</b> chipka deta hai. Instagram jaise platforms upload ke time yehi tags padh kar label lagate hain. TagHatao upload se pehle wo file-wale tags hi saaf kar deta hai.</p>
       </div>
       <div class="qa">
-        <h3>🔒 Kya meri photo kisi server par jati hai?</h3>
-        <p><b>Bilkul nahi.</b> Pura kaam tumhare phone/browser ke andar hota hai. Photo device se bahar hi nahi jati — isiliye 100% private hai, aur bina account ke free hai.</p>
+        <h3>🎬 Kya video ka AI tag bhi saaf hota hai?</h3>
+        <p><b>Haan.</b> MP4 aur MOV video dalo — unke andar ka metadata (title, encoder tag, XMP, C2PA wala hissa) saaf ho jata hai. Video dobara encode nahi hoti, isiliye <b>quality 100% waisi ki waisi</b> rehti hai aur process tez hota hai.</p>
+      </div>
+      <div class="qa">
+        <h3>🔒 Kya meri files kisi server par jati hain?</h3>
+        <p><b>Bilkul nahi.</b> Pura kaam tumhare phone/browser ke andar hota hai. Files device se bahar hi nahi jati — isiliye 100% private hai, aur bina account ke bilkul free hai, bina kisi limit ke.</p>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <p class="lock">🔒 100% private — your images never leave your device.</p>
+  <p class="lock">🔒 100% private — your files never leave your device.</p>
   <p>Developed by <a href="https://github.com/WeakCoderAsh" target="_blank" rel="noopener">WeakCoderAsh</a></p>
 </footer>
+
+<script>
+/*CORE-START*/
+function latin1(buf){ const u=new Uint8Array(buf); let s=''; const CH=32768; for(let i=0;i<u.length;i+=CH){ s+=String.fromCharCode.apply(null,u.subarray(i,i+CH)); } return s; }
+
+function scanImageBuf(buf){
+  const found = new Set();
+  const u = new Uint8Array(buf);
+  const text = latin1(buf);
+  if (u.length > 8 && u[0]===0x89 && u[1]===0x50){
+    let off = 8;
+    while (off + 12 <= u.length){
+      const len = new DataView(buf).getUint32(off);
+      const ctype = String.fromCharCode(u[off+4],u[off+5],u[off+6],u[off+7]);
+      if (ctype==='tEXt' || ctype==='zTXt' || ctype==='iTXt'){
+        let kw=''; for(let i=off+8;i<Math.min(off+8+len,u.length) && u[i]!==0;i++) kw+=String.fromCharCode(u[i]);
+        found.add('PNG text: '+(kw||'chunk'));
+      }
+      if (ctype==='eXIf') found.add('EXIF data');
+      if (ctype==='iCCP') found.add('ICC profile');
+      if (ctype==='tIME') found.add('PNG timestamp');
+      if (ctype==='IEND' || len > u.length) break;
+      off += 12 + len;
+    }
+  }
+  if (u.length > 2 && u[0]===0xFF && u[1]===0xD8){
+    let off = 2;
+    while (off + 4 <= u.length){
+      if (u[off] !== 0xFF) break;
+      const marker = u[off+1];
+      if (marker === 0xDA) break;
+      const len = (u[off+2]<<8) + u[off+3];
+      const seg = text.slice(off+4, off+2+len);
+      if (marker === 0xE1 && seg.startsWith('Exif')) found.add('EXIF data');
+      if (marker === 0xE1 && seg.includes('xap/1.0')) found.add('XMP metadata');
+      if (marker === 0xE2 && seg.includes('ICC_PROFILE')) found.add('ICC profile');
+      if (marker === 0xEB) found.add('C2PA (JUMBF)');
+      if (marker === 0xFE) found.add('JPEG comment');
+      if (len < 2) break;
+      off += 2 + len;
+    }
+  }
+  if (text.slice(0,4)==='RIFF' && text.slice(8,12)==='WEBP'){
+    if (text.includes('EXIF')) found.add('EXIF data');
+    if (text.includes('XMP ')) found.add('XMP metadata');
+    if (text.includes('ICCP')) found.add('ICC profile');
+  }
+  if (/c2pa/i.test(text)) found.add('C2PA Content Credentials');
+  if (text.includes('<x:xmpmeta')) found.add('XMP metadata');
+  return [...found];
+}
+
+/* ---- MP4 / MOV (ISO BMFF) metadata scan + clean ----
+   Cleaning neutralizes metadata boxes (udta / meta / XMP uuid): the box is
+   renamed to 'free' and its payload zeroed. File size and every media chunk
+   offset stay identical, so the video stays fully valid and untouched. */
+const BMFF_CONTAINERS = new Set(['moov','trak','mdia','minf','stbl','edts','dinf']);
+const XMP_UUID = [0xBE,0x7A,0xCF,0xCB,0x97,0xA9,0x42,0xE8,0x9C,0x71,0x99,0x94,0x91,0xE3,0xAF,0xAC];
+function boxTypeAt(u,o){ return String.fromCharCode(u[o],u[o+1],u[o+2],u[o+3]); }
+function isXmpUuid(u,o,header){
+  const p = o + header;
+  if (p + 16 > u.length) return false;
+  for (let i=0;i<16;i++) if (u[p+i] !== XMP_UUID[i]) return false;
+  return true;
+}
+function walkBoxes(u, start, end, cb){
+  let o = start;
+  while (o + 8 <= end){
+    let size = (((u[o]<<24)>>>0) + (u[o+1]<<16) + (u[o+2]<<8) + u[o+3]);
+    let header = 8;
+    if (size === 1){
+      const hi = (((u[o+8]<<24)>>>0) + (u[o+9]<<16) + (u[o+10]<<8) + u[o+11]);
+      const lo = (((u[o+12]<<24)>>>0) + (u[o+13]<<16) + (u[o+14]<<8) + u[o+15]);
+      size = hi * 4294967296 + lo; header = 16;
+    } else if (size === 0){ size = end - o; }
+    if (size < header || o + size > end) break;
+    const type = boxTypeAt(u, o+4);
+    const action = cb(o, size, type, header);
+    if (action !== 'skip' && BMFF_CONTAINERS.has(type)){
+      walkBoxes(u, o + header, o + size, cb);
+    } else if (action !== 'skip' && type === 'meta'){
+      walkBoxes(u, o + header + 4, o + size, cb);
+    } else if (action !== 'skip' && type === 'udta'){
+      walkBoxes(u, o + header, o + size, cb);
+    }
+    o += size;
+  }
+}
+function isBmff(buf){
+  const u = new Uint8Array(buf);
+  return u.length > 8 && boxTypeAt(u,4) === 'ftyp';
+}
+function scanVideoBuf(buf){
+  const found = new Set();
+  const u = new Uint8Array(buf);
+  walkBoxes(u, 0, u.length, (o, size, type, header) => {
+    if (type === 'udta') found.add('Video metadata (udta)');
+    if (type === 'meta') found.add('QuickTime metadata (meta)');
+    if (type === 'uuid' && isXmpUuid(u, o, header)) found.add('XMP (uuid box)');
+  });
+  const text = latin1(buf).toLowerCase();
+  if (text.includes('lavf')) found.add('Encoder tag (FFmpeg/Lavf)');
+  if (text.includes('handbrake')) found.add('Encoder tag (HandBrake)');
+  if (text.includes('c2pa') || text.includes('contentauth')) found.add('C2PA Content Credentials');
+  if (text.includes('<x:xmpmeta')) found.add('XMP metadata');
+  return [...found];
+}
+function cleanVideoBuf(buf){
+  const out = new Uint8Array(new Uint8Array(buf)); // working copy
+  let removed = 0;
+  walkBoxes(out, 0, out.length, (o, size, type, header) => {
+    if (type === 'udta' || type === 'meta' || (type === 'uuid' && isXmpUuid(out, o, header))){
+      out[o+4] = 0x66; out[o+5] = 0x72; out[o+6] = 0x65; out[o+7] = 0x65; // 'free'
+      out.fill(0, o + header, o + size);
+      removed++;
+      return 'skip';
+    }
+  });
+  return { data: out, removed };
+}
+
+/* ---- Minimal ZIP writer (STORE, no compression — media is already compressed) ---- */
+const CRC_TABLE = (() => {
+  const t = new Int32Array(256);
+  for (let n=0;n<256;n++){ let c=n; for (let k=0;k<8;k++) c = (c & 1) ? (0xEDB88320 ^ (c>>>1)) : (c>>>1); t[n]=c; }
+  return t;
+})();
+function crc32(u){
+  let c = 0xFFFFFFFF;
+  for (let i=0;i<u.length;i++) c = CRC_TABLE[(c ^ u[i]) & 0xFF] ^ (c>>>8);
+  return (c ^ 0xFFFFFFFF) >>> 0;
+}
+function makeZipBytes(entries){
+  const enc = new TextEncoder();
+  const now = new Date();
+  const dostime = ((now.getHours()<<11) | (now.getMinutes()<<5) | (now.getSeconds()>>1)) & 0xFFFF;
+  const dosdate = (((Math.max(1980, now.getFullYear()) - 1980)<<9) | ((now.getMonth()+1)<<5) | now.getDate()) & 0xFFFF;
+  const chunks = []; const central = [];
+  let offset = 0;
+  for (const e of entries){
+    const nameBytes = enc.encode(e.name);
+    const crc = crc32(e.data); const size = e.data.length;
+    const lh = new DataView(new ArrayBuffer(30));
+    lh.setUint32(0, 0x04034b50, true); lh.setUint16(4, 20, true); lh.setUint16(6, 0x0800, true);
+    lh.setUint16(8, 0, true); lh.setUint16(10, dostime, true); lh.setUint16(12, dosdate, true);
+    lh.setUint32(14, crc, true); lh.setUint32(18, size, true); lh.setUint32(22, size, true);
+    lh.setUint16(26, nameBytes.length, true); lh.setUint16(28, 0, true);
+    chunks.push(new Uint8Array(lh.buffer), nameBytes, e.data);
+    const ch = new DataView(new ArrayBuffer(46));
+    ch.setUint32(0, 0x02014b50, true); ch.setUint16(4, 20, true); ch.setUint16(6, 20, true);
+    ch.setUint16(8, 0x0800, true); ch.setUint16(10, 0, true); ch.setUint16(12, dostime, true);
+    ch.setUint16(14, dosdate, true); ch.setUint32(16, crc, true); ch.setUint32(20, size, true);
+    ch.setUint32(24, size, true); ch.setUint16(28, nameBytes.length, true); ch.setUint32(42, offset, true);
+    central.push({ head: new Uint8Array(ch.buffer), nameBytes });
+    offset += 30 + nameBytes.length + size;
+  }
+  let cdSize = 0;
+  for (const c of central){ chunks.push(c.head, c.nameBytes); cdSize += 46 + c.nameBytes.length; }
+  const eo = new DataView(new ArrayBuffer(22));
+  eo.setUint32(0, 0x06054b50, true); eo.setUint16(8, entries.length, true); eo.setUint16(10, entries.length, true);
+  eo.setUint32(12, cdSize, true); eo.setUint32(16, offset, true);
+  chunks.push(new Uint8Array(eo.buffer));
+  let total = 0; for (const c of chunks) total += c.length;
+  const out = new Uint8Array(total); let p = 0;
+  for (const c of chunks){ out.set(c, p); p += c.length; }
+  return out;
+}
+/*CORE-END*/
+</script>
 
 <script>
 const drop = document.getElementById('drop');
 const input = document.getElementById('fileInput');
 const results = document.getElementById('results');
+const batchbar = document.getElementById('batchbar');
+const batchtext = document.getElementById('batchtext');
+const zipBtn = document.getElementById('zipBtn');
+const cleanedFiles = []; // {name, blob}
+let pendingCount = 0;
+
 document.getElementById('pickBtn').addEventListener('click', e => { e.stopPropagation(); input.click(); });
 drop.addEventListener('click', () => input.click());
 drop.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); input.click(); } });
@@ -213,71 +406,62 @@ if (demoBtn) demoBtn.addEventListener('click', async () => {
   demoBtn.disabled = false; demoBtn.textContent = '▶ Example khud chalao — ek AI photo saaf karke dekho';
 });
 
-function fmt(n){ if(n>1048576) return (n/1048576).toFixed(2)+' MB'; if(n>1024) return (n/1024).toFixed(1)+' KB'; return n+' B'; }
-function latin1(buf){ const u=new Uint8Array(buf); let s=''; const CH=32768; for(let i=0;i<u.length;i+=CH){ s+=String.fromCharCode.apply(null,u.subarray(i,i+CH)); } return s; }
+zipBtn.addEventListener('click', async () => {
+  if (!cleanedFiles.length) return;
+  zipBtn.disabled = true; zipBtn.textContent = '⏳ ZIP ban raha hai…';
+  try{
+    const entries = [];
+    for (const cf of cleanedFiles){
+      entries.push({ name: cf.name, data: new Uint8Array(await cf.blob.arrayBuffer()) });
+    }
+    const zipBlob = new Blob([makeZipBytes(entries)], { type: 'application/zip' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(zipBlob); a.download = 'taghatao-clean.zip'; a.click();
+  }catch(e){ /* individual downloads still available */ }
+  zipBtn.disabled = false; updateBatchbar();
+});
 
-function scan(buf, type){
-  const found = new Set();
-  const u = new Uint8Array(buf);
-  const text = latin1(buf);
-  // PNG chunks
-  if (u.length > 8 && u[0]===0x89 && u[1]===0x50){
-    let off = 8;
-    while (off + 12 <= u.length){
-      const len = new DataView(buf).getUint32(off);
-      const ctype = String.fromCharCode(u[off+4],u[off+5],u[off+6],u[off+7]);
-      if (ctype==='tEXt' || ctype==='zTXt' || ctype==='iTXt'){
-        let kw=''; for(let i=off+8;i<Math.min(off+8+len,u.length) && u[i]!==0;i++) kw+=String.fromCharCode(u[i]);
-        found.add('PNG text: '+(kw||'chunk'));
-      }
-      if (ctype==='eXIf') found.add('EXIF data');
-      if (ctype==='iCCP') found.add('ICC profile');
-      if (ctype==='tIME') found.add('PNG timestamp');
-      if (ctype==='IEND' || len > u.length) break;
-      off += 12 + len;
-    }
+function fmt(n){ if(n>1048576) return (n/1048576).toFixed(2)+' MB'; if(n>1024) return (n/1024).toFixed(1)+' KB'; return n+' B'; }
+
+function updateBatchbar(){
+  if (!cleanedFiles.length && !pendingCount){ batchbar.classList.remove('show'); return; }
+  batchbar.classList.add('show');
+  if (pendingCount > 0){
+    batchtext.textContent = `⚙️ Process chal raha hai… ${cleanedFiles.length} file clean ready`;
+    zipBtn.disabled = true; zipBtn.textContent = '⬇ Saari Clean Files — ZIP';
+  } else {
+    batchtext.textContent = `💥 ${cleanedFiles.length} file${cleanedFiles.length>1?'s':''} clean ready!`;
+    zipBtn.disabled = cleanedFiles.length < 2;
+    zipBtn.textContent = cleanedFiles.length < 2 ? '⬇ ZIP (2+ files par)' : `⬇ Saari Clean Files — ZIP (${cleanedFiles.length})`;
   }
-  // JPEG markers
-  if (u.length > 2 && u[0]===0xFF && u[1]===0xD8){
-    let off = 2;
-    while (off + 4 <= u.length){
-      if (u[off] !== 0xFF) break;
-      const marker = u[off+1];
-      if (marker === 0xDA) break; // SOS — scan data starts
-      const len = (u[off+2]<<8) + u[off+3];
-      const seg = text.slice(off+4, off+2+len);
-      if (marker === 0xE1 && seg.startsWith('Exif')) found.add('EXIF data');
-      if (marker === 0xE1 && seg.includes('xap/1.0')) found.add('XMP metadata');
-      if (marker === 0xE2 && seg.includes('ICC_PROFILE')) found.add('ICC profile');
-      if (marker === 0xEB) found.add('C2PA (JUMBF)');
-      if (marker === 0xFE) found.add('JPEG comment');
-      if (len < 2) break;
-      off += 2 + len;
-    }
-  }
-  // WebP chunks
-  if (text.slice(0,4)==='RIFF' && text.slice(8,12)==='WEBP'){
-    if (text.includes('EXIF')) found.add('EXIF data');
-    if (text.includes('XMP ')) found.add('XMP metadata');
-    if (text.includes('ICCP')) found.add('ICC profile');
-  }
-  if (/c2pa/i.test(text)) found.add('C2PA Content Credentials');
-  if (text.includes('<x:xmpmeta')) found.add('XMP metadata');
-  return [...found];
+}
+
+function fileKind(file){
+  if (file.type.startsWith('image/')) return 'image';
+  if (file.type.startsWith('video/')) return 'video';
+  const n = file.name.toLowerCase();
+  if (/\.(mp4|mov|m4v)$/.test(n)) return 'video';
+  if (/\.(jpe?g|png|webp)$/.test(n)) return 'image';
+  return null;
 }
 
 async function handleFiles(fileList){
   for (const file of fileList){
-    if (!file.type.startsWith('image/')) continue;
-    await processFile(file);
+    if (!fileKind(file)) continue;
+    pendingCount++; updateBatchbar();
+    try { await processFile(file); }
+    finally { pendingCount--; updateBatchbar(); }
   }
 }
 
-async function processFile(file){
+function makeCard(file, kind){
   const card = document.createElement('div');
   card.className = 'card';
   const thumb = URL.createObjectURL(file);
-  card.innerHTML = `<img src="${thumb}" alt="">
+  const media = kind === 'video'
+    ? `<video src="${thumb}" muted playsinline preload="metadata"></video>`
+    : `<img src="${thumb}" alt="">`;
+  card.innerHTML = `${media}
     <div class="body">
       <div class="name"></div>
       <div class="sizes">${fmt(file.size)} · scanning…</div>
@@ -286,52 +470,80 @@ async function processFile(file){
     </div>`;
   card.querySelector('.name').textContent = file.name;
   results.prepend(card);
-  const chipsEl = card.querySelector('.chips');
-  const statusEl = card.querySelector('.status');
-  const sizesEl = card.querySelector('.sizes');
+  return {
+    card,
+    chipsEl: card.querySelector('.chips'),
+    statusEl: card.querySelector('.status'),
+    sizesEl: card.querySelector('.sizes')
+  };
+}
+
+function finishCard(ui, file, blob, outName, left, kindLabel){
+  const url = URL.createObjectURL(blob);
+  ui.sizesEl.textContent = `${fmt(file.size)} → ${fmt(blob.size)}`;
+  if (left.length === 0){
+    ui.statusEl.className = 'status done';
+    ui.statusEl.textContent = `💥 Boom! Clean ${kindLabel} Ready ✅`;
+  } else {
+    ui.statusEl.className = 'status';
+    ui.statusEl.textContent = 'Cleaned ✅ (still present: ' + left.join(', ') + ')';
+  }
+  const btn = document.createElement('button');
+  btn.className = 'dl'; btn.textContent = '⬇ Download';
+  btn.addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = url; a.download = outName; a.click();
+  });
+  ui.card.appendChild(btn);
+  cleanedFiles.push({ name: outName, blob });
+  updateBatchbar();
+}
+
+async function processFile(file){
+  const kind = fileKind(file);
+  const ui = makeCard(file, kind);
   try{
     const buf = await file.arrayBuffer();
-    const found = scan(buf, file.type);
-    chipsEl.innerHTML = found.length
-      ? found.map(f => `<span class="chip">🧹 ${f}</span>`).join('')
-      : '<span class="chip safe">No metadata found — already clean</span>';
-
-    let bmp;
-    try { bmp = await createImageBitmap(file, { imageOrientation: 'from-image' }); }
-    catch(e){ bmp = await createImageBitmap(file); }
-    const canvas = document.createElement('canvas');
-    canvas.width = bmp.width; canvas.height = bmp.height;
-    canvas.getContext('2d').drawImage(bmp, 0, 0);
-
-    const okTypes = ['image/jpeg','image/png','image/webp'];
-    const outType = okTypes.includes(file.type) ? file.type : 'image/png';
-    const ext = outType === 'image/png' ? 'png' : outType === 'image/webp' ? 'webp' : 'jpg';
-    const blob = await new Promise(r => canvas.toBlob(r, outType, 0.95));
-    if (!blob) throw new Error('encode failed');
-
-    const outBuf = await blob.arrayBuffer();
-    const left = scan(outBuf, outType);
     const base = file.name.replace(/\.[^.]+$/, '');
-    const url = URL.createObjectURL(blob);
-    sizesEl.textContent = `${fmt(file.size)} → ${fmt(blob.size)} · ${bmp.width}×${bmp.height}`;
-    if (left.length === 0){
-      statusEl.className = 'status done';
-      statusEl.textContent = '💥 Boom! Clean Image Ready ✅';
+    if (kind === 'video'){
+      if (!isBmff(buf)) throw new Error('not bmff');
+      const found = scanVideoBuf(buf);
+      ui.chipsEl.innerHTML = found.length
+        ? found.map(f => `<span class="chip">🧹 ${f}</span>`).join('')
+        : '<span class="chip safe">No metadata found — already clean</span>';
+      const { data } = cleanVideoBuf(buf);
+      const blob = new Blob([data], { type: file.type || 'video/mp4' });
+      const ext = (file.name.match(/\.[^.]+$/) || ['.mp4'])[0].toLowerCase();
+      const left = scanVideoBuf(data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength));
+      finishCard(ui, file, blob, base + '_clean' + ext, left, 'Video');
     } else {
-      statusEl.className = 'status';
-      statusEl.textContent = 'Cleaned ✅ (still present: ' + left.join(', ') + ')';
+      const found = scanImageBuf(buf);
+      ui.chipsEl.innerHTML = found.length
+        ? found.map(f => `<span class="chip">🧹 ${f}</span>`).join('')
+        : '<span class="chip safe">No metadata found — already clean</span>';
+      let bmp;
+      try { bmp = await createImageBitmap(file, { imageOrientation: 'from-image' }); }
+      catch(e){ bmp = await createImageBitmap(file); }
+      const canvas = document.createElement('canvas');
+      canvas.width = bmp.width; canvas.height = bmp.height;
+      canvas.getContext('2d').drawImage(bmp, 0, 0);
+      const okTypes = ['image/jpeg','image/png','image/webp'];
+      const outType = okTypes.includes(file.type) ? file.type : 'image/png';
+      const ext = outType === 'image/png' ? 'png' : outType === 'image/webp' ? 'webp' : 'jpg';
+      const blob = await new Promise(r => canvas.toBlob(r, outType, 0.95));
+      if (!blob) throw new Error('encode failed');
+      const outBuf = await blob.arrayBuffer();
+      const left = scanImageBuf(outBuf);
+      ui.sizesEl.textContent = `${fmt(file.size)} → ${fmt(blob.size)} · ${bmp.width}×${bmp.height}`;
+      finishCard(ui, file, blob, base + '_clean.' + ext, left, 'Image');
+      ui.sizesEl.textContent = `${fmt(file.size)} → ${fmt(blob.size)} · ${bmp.width}×${bmp.height}`;
     }
-    const btn = document.createElement('button');
-    btn.className = 'dl'; btn.textContent = '⬇ Download';
-    btn.addEventListener('click', () => {
-      const a = document.createElement('a');
-      a.href = url; a.download = base + '_clean.' + ext; a.click();
-    });
-    card.appendChild(btn);
   }catch(err){
-    statusEl.className = 'status err';
-    statusEl.textContent = '⚠ Could not process this image in the browser.';
-    sizesEl.textContent = fmt(file.size);
+    ui.statusEl.className = 'status err';
+    ui.statusEl.textContent = kind === 'video'
+      ? '⚠ Is video ko browser me process nahi kar paye (MP4/MOV hi support hai).'
+      : '⚠ Could not process this image in the browser.';
+    ui.sizesEl.textContent = fmt(file.size);
   }
 }
 </script>
