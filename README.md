@@ -1,6 +1,10 @@
-<h1 align="center">🧹 MetaStrip</h1>
+<h1 align="center">🧹 TagHatao</h1>
 
-<p align="center"><em>Remove metadata from AI images — and any image — in one clean pass.</em></p>
+<p align="center"><em>India's free AI Tag Remover — remove AI tags &amp; metadata from photos, in one clean pass.</em></p>
+
+<p align="center">AI Tag Remover · AI Metadata Remover · AI Label Remover · Photo Se AI Tag Hataye</p>
+
+<p align="center"><strong>Try it live:</strong> <a href="https://weakcoderash.github.io/taghatao/">weakcoderash.github.io/taghatao</a></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/python-3.9+-blue" alt="Python 3.9+">
@@ -20,7 +24,7 @@
 
 ## How it works
 
-MetaStrip re-encodes **only the pixels** into a brand-new file. Metadata is never copied, so nothing survives — and the tool **verifies** the clean file afterwards and reports anything left behind.
+TagHatao re-encodes **only the pixels** into a brand-new file. Metadata is never copied, so nothing survives — and the tool **verifies** the clean file afterwards and reports anything left behind.
 
 - ✅ Your original file is never modified — output is always a new `_clean` file
 - ✅ Works completely offline, no uploads anywhere
@@ -50,15 +54,9 @@ Supported formats: **JPG, PNG, WebP, BMP, TIFF**
   ✓ Verification: clean file me koi metadata nahi bacha.
 ```
 
-## Honest limits
-
-- Pixel-level invisible watermarks (like Google **SynthID**) live *inside the pixels*, not in metadata — no metadata tool can remove them.
-- Detectors that analyse pixels are unaffected by metadata removal.
-- MetaStrip is for **privacy and clean files** — it makes no "detector bypass" claims.
-
 ## Roadmap
 
-- [ ] Drag & drop web UI (runs 100% in your browser)
+- [x] Drag & drop web UI (runs 100% in your browser) — live at https://weakcoderash.github.io/taghatao/
 - [ ] Video metadata support
 
 ## License

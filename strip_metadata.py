@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-MetaStrip — AI images (aur kisi bhi image) se saara metadata saaf karta hai.
-https://github.com/WeakCoderAsh/metastrip
+TagHatao — AI images (aur kisi bhi image) se AI tags aur saara metadata saaf karta hai.
+https://github.com/WeakCoderAsh/taghatao
 
 Hatata hai:
   - EXIF (camera, GPS, software, date, artist, copyright...)

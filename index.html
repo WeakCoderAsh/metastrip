@@ -3,8 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MetaStrip — No More AI Metadata</title>
-<meta name="description" content="Drop an image. MetaStrip removes EXIF, XMP, C2PA and AI generation metadata (prompts, workflows, seeds). Clean file ready in seconds. 100% in your browser.">
+<title>TagHatao — AI Tag Remover | Photo Se AI Tag & Metadata Hataye (Free Online)</title>
+<meta name="description" content="TagHatao — India's free AI tag remover. Remove AI tags, C2PA, EXIF and metadata from photos online. Photo se AI tag hataye seconds me — no upload, no sign-up, 100% in your browser.">
+<meta property="og:title" content="TagHatao — AI Tag Remover (Free, Online)">
+<meta property="og:description" content="Photo se AI tag aur metadata hataye — free, bina upload, bina sign-up. India's own AI tag remover.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://weakcoderash.github.io/taghatao/">
+<link rel="canonical" href="https://weakcoderash.github.io/taghatao/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧹</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"TagHatao — AI Tag Remover","url":"https://weakcoderash.github.io/taghatao/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"description":"Free online AI tag remover and AI metadata remover. Remove AI tags, C2PA, EXIF and prompts from photos in your browser."}
+</script>
 <style>
   :root{
     --bg:#050807; --panel:#0b100d; --panel2:#0e1511; --line:#1d2b21;
@@ -60,16 +69,42 @@
   .dl:hover{background:#35f093}
   footer{max-width:880px; color:var(--muted); font-size:13px; text-align:center; margin-top:38px; line-height:1.7}
   footer .lock{color:#cfe9d8}
+  .trust{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:20px}
+  .trust span{font-size:13px; font-weight:600; color:#cfe9d8; border:1px solid var(--line); background:rgba(34,229,132,.06); padding:7px 13px; border-radius:999px}
+  section.block{width:100%; max-width:880px; margin-top:52px; text-align:left}
+  section.block h2{font-size:clamp(24px,4.5vw,34px); font-weight:900; letter-spacing:-.5px; text-align:center}
+  section.block h2 .grad{background:linear-gradient(92deg,#22e584,#7CFFB2); -webkit-background-clip:text; background-clip:text; color:transparent}
+  section.block .lead{color:var(--muted); text-align:center; margin:10px auto 24px; max-width:600px; font-size:15px}
+  .story{display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:10px; align-items:stretch}
+  @media(max-width:720px){.story{grid-template-columns:1fr} .story .sarrow{transform:rotate(90deg); justify-self:center}}
+  .scard{background:linear-gradient(180deg,var(--panel2),var(--panel)); border:1px solid var(--line); border-radius:18px; padding:20px 16px; text-align:center}
+  .scard .ic{font-size:38px}
+  .scard h3{font-size:16px; margin-top:8px}
+  .scard p{color:var(--muted); font-size:13.5px; margin-top:6px; line-height:1.55}
+  .badge{display:inline-block; margin-top:12px; font-size:12.5px; font-weight:800; padding:6px 12px; border-radius:999px}
+  .badge.red{background:rgba(255,90,80,.12); color:#ff9d94; border:1px solid rgba(255,90,80,.35)}
+  .badge.green{background:rgba(34,229,132,.12); color:var(--green); border:1px solid rgba(34,229,132,.4)}
+  .badge.grey{background:rgba(255,255,255,.05); color:#cfe9d8; border:1px solid var(--line)}
+  .sarrow{align-self:center; font-size:22px; color:var(--green)}
+  .demo-wrap{text-align:center; margin-top:22px}
+  .faq{display:grid; gap:12px}
+  .qa{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:18px}
+  .qa h3{font-size:16.5px}
+  .qa p{color:var(--muted); font-size:14.5px; margin-top:7px; line-height:1.65}
+  .qa p b, .qa h3 b{color:#cfe9d8}
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">🧹 Meta<span>Strip</span></div>
+  <div class="logo">🧹 Tag<span>Hatao</span></div>
 </header>
 
 <main>
-  <h1>No More <span class="grad">AI Metadata.</span></h1>
-  <p class="sub">Clean your AI image. Drop it here — get it back clean, in seconds.</p>
+  <h1>Photo Se <span class="grad">AI Tag Hatao.</span></h1>
+  <p class="sub">India ka apna <b>free AI Tag Remover</b> — AI photo dalo, saare chhupe AI tags aur metadata saaf. Clean photo, seconds me.</p>
+  <div class="trust">
+    <span>✅ Free Forever</span><span>🚫 No Sign-up</span><span>🔒 No Upload — photo phone se bahar nahi jati</span><span>🇮🇳 Made for India</span>
+  </div>
 
   <div class="steps">
     <div class="step"><b>1</b> 📥 &nbsp;Drop Image</div><div class="arrow">→</div>
@@ -87,6 +122,64 @@
   </div>
 
   <div id="results"></div>
+
+  <section class="block" id="example">
+    <h2>Dekho khud — <span class="grad">ek asal example</span></h2>
+    <p class="lead">AI photo ke andar ek chhupa hua tag hota hai. Platforms upload ke time wahi tag padhte hain. TagHatao use hatata hai — phir file saaf.</p>
+    <div class="story">
+      <div class="scard">
+        <div class="ic">🤖🖼️</div>
+        <h3>1 · AI Photo</h3>
+        <p>ChatGPT / Gemini / Midjourney se bani photo ke andar AI tag chipa hota hai — dikhai nahi deta.</p>
+        <span class="badge red">🔴 File me AI tag hai</span>
+      </div>
+      <div class="sarrow">➜</div>
+      <div class="scard">
+        <div class="ic">🧹✨</div>
+        <h3>2 · TagHatao Clean</h3>
+        <p>Photo yahan dalo — AI tag, C2PA, EXIF, prompt, sab metadata seconds me saaf.</p>
+        <span class="badge grey">⚙️ Auto process</span>
+      </div>
+      <div class="sarrow">➜</div>
+      <div class="scard">
+        <div class="ic">📤✅</div>
+        <h3>3 · Upload Ready</h3>
+        <p>Clean file dobara scan karke verify hoti hai. Ab Instagram, Facebook, kahin bhi upload karo — file ke andar koi AI tag nahi.</p>
+        <span class="badge green">🟢 No AI tags in file</span>
+      </div>
+    </div>
+    <div class="demo-wrap">
+      <button class="btn" id="demoBtn" type="button">▶ Example khud chalao — ek AI photo saaf karke dekho</button>
+      <p class="lead" style="margin-top:12px">Upar wale box me asal example photo apne aap dalegi aur clean hokar result dikhega.</p>
+    </div>
+  </section>
+
+  <section class="block" id="guide">
+    <h2>Photo se AI tag <span class="grad">kaise hataye?</span></h2>
+    <p class="lead">Bas 3 step — koi app nahi, koi sign-up nahi.</p>
+    <div class="faq">
+      <div class="qa">
+        <h3>📥 Step 1 — Photo dalo</h3>
+        <p>Upar wale bade box me apni AI photo drag karo ya <b>Choose Image</b> dabao. JPG, PNG, WebP — ek ya zyada, sab chalega.</p>
+      </div>
+      <div class="qa">
+        <h3>⚙️ Step 2 — Auto clean</h3>
+        <p>Process khud shuru hota hai. TagHatao photo ke andar chhupe <b>AI tags, C2PA Content Credentials, EXIF, GPS, prompt aur workflow</b> — sab metadata saaf kar deta hai, aur clean file ko dobara scan karke verify bhi karta hai.</p>
+      </div>
+      <div class="qa">
+        <h3>💥 Step 3 — Download aur upload</h3>
+        <p><b>"Boom! Clean Image Ready"</b> aate hi Download dabao. Ab ye saaf photo Instagram, Facebook, YouTube — jahan chaho upload karo.</p>
+      </div>
+      <div class="qa">
+        <h3>❓ Instagram par "AI info" label kyun aata hai?</h3>
+        <p>Jab tum ChatGPT, Gemini ya kisi AI tool se photo banate/edit karte ho, wo tool file ke andar <b>C2PA aur IPTC AI tags</b> chipka deta hai. Instagram jaise platforms upload ke time yehi tags padh kar label lagate hain. TagHatao upload se pehle wo file-wale tags hi saaf kar deta hai.</p>
+      </div>
+      <div class="qa">
+        <h3>🔒 Kya meri photo kisi server par jati hai?</h3>
+        <p><b>Bilkul nahi.</b> Pura kaam tumhare phone/browser ke andar hota hai. Photo device se bahar hi nahi jati — isiliye 100% private hai, aur bina account ke free hai.</p>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -105,6 +198,20 @@ drop.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') 
 ['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
 drop.addEventListener('drop', e => handleFiles(e.dataTransfer.files));
 input.addEventListener('change', () => { handleFiles(input.files); input.value = ''; });
+const demoBtn = document.getElementById('demoBtn');
+if (demoBtn) demoBtn.addEventListener('click', async () => {
+  demoBtn.disabled = true; demoBtn.textContent = '⏳ Example chal raha hai…';
+  try{
+    const res = await fetch('demo-ai-photo.png');
+    const blob = await res.blob();
+    const f = new File([blob], 'demo-ai-photo.png', { type: 'image/png' });
+    document.getElementById('drop').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    await processFile(f);
+  }catch(e){
+    alert('Example load nahi ho paya — apni photo daal kar try karo.');
+  }
+  demoBtn.disabled = false; demoBtn.textContent = '▶ Example khud chalao — ek AI photo saaf karke dekho';
+});
 
 function fmt(n){ if(n>1048576) return (n/1048576).toFixed(2)+' MB'; if(n>1024) return (n/1024).toFixed(1)+' KB'; return n+' B'; }
 function latin1(buf){ const u=new Uint8Array(buf); let s=''; const CH=32768; for(let i=0;i<u.length;i+=CH){ s+=String.fromCharCode.apply(null,u.subarray(i,i+CH)); } return s; }
