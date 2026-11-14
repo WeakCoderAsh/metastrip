@@ -218,6 +218,9 @@
   .mini p{color:var(--muted); font-size:13px; margin-top:5px; line-height:1.55}
   @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important}}
 </style>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#04070a">
+<link rel="apple-touch-icon" href="icon-192.png">
 </head>
 <body>
 <div class="aurora" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i></div>
@@ -663,5 +666,6 @@ document.querySelectorAll('.drop').forEach(d=>{
   els.forEach(el=>io.observe(el));
 })();
 </script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})}</script>
 </body>
 </html>
