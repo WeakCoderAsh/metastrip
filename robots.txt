@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://weakcoderash.github.io/taghatao/sitemap.xml
