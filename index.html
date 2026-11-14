@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TagHatao — AI Tag Remover | Photo & Video Se AI Tag & Metadata Hataye (Free Online)</title>
-<meta name="description" content="TagHatao — India's free AI tag remover. Remove AI tags, C2PA, EXIF and metadata from photos AND videos online. Batch clean, ZIP download, no limit — photo/video se AI tag hataye seconds me, no upload, no sign-up, 100% in your browser.">
+<meta name="description" content="TagHatao — India's free AI tag remover. Remove AI tags, C2PA, EXIF and metadata from photos and videos online. No limit, no sign-up, no upload — everything happens in your browser.">
 <meta property="og:title" content="TagHatao — AI Tag Remover (Free, Online)">
-<meta property="og:description" content="Photo aur video se AI tag aur metadata hataye — batch me, ZIP ke sath, free, bina upload, bina sign-up. India's own AI tag remover.">
+<meta property="og:description" content="Photo aur video se AI tag aur metadata hataye — free, bina upload, bina sign-up. India's own AI tag remover.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://weakcoderash.github.io/taghatao/">
 <link rel="canonical" href="https://weakcoderash.github.io/taghatao/">
@@ -16,153 +16,106 @@
 </script>
 <style>
   :root{
-    --bg:#04070a; --panel:#0a0f0d; --panel2:#0d1512; --line:#1d2b21;
-    --green:#22e584; --green2:#12b76a; --neon:#2bff9e; --cyan:#39f5d8;
-    --text:#eafff3; --muted:#8fa398;
+    --bg:#05080a; --panel:#0a100d; --line:rgba(43,255,158,.16);
+    --green:#22e584; --neon:#2bff9e; --text:#eafff3; --muted:#93a89b;
   }
   *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
   body{background:
-      radial-gradient(900px 480px at 50% -120px, rgba(34,229,132,.17), transparent 60%),
-      radial-gradient(760px 420px at 88% 108%, rgba(57,245,216,.08), transparent 60%),
-      radial-gradient(600px 360px at 8% 108%, rgba(34,229,132,.07), transparent 60%),
-      linear-gradient(rgba(43,255,158,.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(43,255,158,.05) 1px, transparent 1px),
+      radial-gradient(820px 420px at 50% -140px, rgba(34,229,132,.13), transparent 62%),
+      linear-gradient(rgba(43,255,158,.032) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(43,255,158,.032) 1px, transparent 1px),
       var(--bg);
-    background-size:auto,auto,auto,46px 46px,46px 46px;
+    background-size:auto,44px 44px,44px 44px;
     color:var(--text); font-family:ui-sans-system,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-    min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:22px 16px 40px}
+    min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:24px 16px 44px}
   a{color:var(--neon); text-decoration:none}
-  header{width:100%; max-width:880px; display:flex; justify-content:space-between; align-items:center}
-  .logo{font-weight:800; font-size:20px; letter-spacing:.4px}
-  .logo span{color:var(--neon); text-shadow:0 0 14px rgba(43,255,158,.65)}
-  .gh{border:1px solid rgba(43,255,158,.3); padding:8px 14px; border-radius:999px; color:var(--text); font-size:14px; background:rgba(10,25,16,.6)}
-  main{width:100%; max-width:880px; text-align:center; margin-top:44px}
-  h1{font-size:clamp(38px,7vw,64px); line-height:1.05; font-weight:900; letter-spacing:-.5px}
-  h1 .grad{background:linear-gradient(92deg,#2bff9e,#39f5d8 55%,#7CFFB2); -webkit-background-clip:text; background-clip:text; color:transparent;
-    filter:drop-shadow(0 0 22px rgba(43,255,158,.40))}
-  .sub{color:var(--muted); font-size:clamp(15px,2.6vw,19px); margin:16px auto 0; max-width:620px}
-  .sub b{color:#d9ffe9}
-  .trust{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:20px}
-  .trust span{font-size:13px; font-weight:600; color:#d9ffe9; border:1px solid rgba(43,255,158,.28);
-    background:rgba(9,24,15,.55); backdrop-filter:blur(6px); padding:7px 13px; border-radius:999px;
-    box-shadow:0 0 14px rgba(34,229,132,.10), inset 0 0 12px rgba(34,229,132,.05)}
-  .steps{display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:12px; align-items:stretch; margin:34px 0 28px}
-  @media(max-width:720px){.steps{grid-template-columns:1fr} .steps .sarrow2{transform:rotate(90deg); justify-self:center}}
-  .stepcard{position:relative; border:1px solid rgba(43,255,158,.24); border-radius:18px; padding:22px 14px 16px; text-align:center;
-    background:linear-gradient(160deg, rgba(19,40,27,.88), rgba(6,12,9,.92)); backdrop-filter:blur(8px);
-    box-shadow:0 18px 36px rgba(0,0,0,.55), 0 0 22px rgba(34,229,132,.08), inset 0 0 18px rgba(34,229,132,.05)}
-  .stepcard::after{content:''; position:absolute; top:-1px; left:50%; transform:translateX(-50%); width:96px; height:2px;
-    background:linear-gradient(90deg,transparent,var(--neon),transparent); box-shadow:0 0 12px var(--neon)}
-  .stepcard .snum{position:absolute; top:-12px; left:16px; width:27px; height:27px; border-radius:50%; z-index:2;
-    background:linear-gradient(160deg,#46f49d,#13c76d); color:#03130a; font-weight:900; font-size:14px;
-    display:flex; align-items:center; justify-content:center;
-    box-shadow:0 0 16px rgba(43,255,158,.55), inset 0 2px 3px rgba(255,255,255,.55)}
-  .stepcard .sic{font-size:31px; line-height:1.2; filter:drop-shadow(0 0 12px rgba(43,255,158,.35))}
-  .stepcard h3{font-size:16px; margin-top:9px; letter-spacing:.2px}
-  .stepcard p{color:var(--muted); font-size:13px; margin-top:5px; line-height:1.5}
-  .sarrow2{align-self:center; font-size:20px; color:var(--neon); text-shadow:0 0 12px rgba(43,255,158,.7)}
-  .tools{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  header{width:100%; max-width:840px; display:flex; justify-content:space-between; align-items:center}
+  .logo{font-weight:800; font-size:20px; letter-spacing:.3px}
+  .logo span{color:var(--neon)}
+  main{width:100%; max-width:840px; text-align:center; margin-top:52px}
+  .fadeup{animation:fadeUp .7s cubic-bezier(.22,.8,.3,1) both}
+  .fadeup.d1{animation-delay:.08s} .fadeup.d2{animation-delay:.16s}
+  @keyframes fadeUp{from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:translateY(0)}}
+  h1{font-size:clamp(36px,6.4vw,56px); line-height:1.08; font-weight:900; letter-spacing:-.5px}
+  h1 .grad{background:linear-gradient(92deg,#2bff9e,#4fe3c1); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .sub{color:var(--muted); font-size:clamp(15px,2.5vw,18px); margin:14px auto 0; max-width:560px; line-height:1.6}
+  .sub b{color:#d9ffe9; font-weight:600}
+  .trust{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:22px}
+  .trust span{font-size:13px; font-weight:600; color:#cfe9d8; border:1px solid var(--line);
+    background:rgba(10,22,15,.55); padding:7px 14px; border-radius:999px}
+  .tools{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:38px}
   @media(max-width:720px){.tools{grid-template-columns:1fr}}
-  .drop{border:1px solid rgba(43,255,158,.30); border-radius:20px;
-    background:linear-gradient(160deg, rgba(20,44,30,.88), rgba(6,13,9,.94)); backdrop-filter:blur(8px);
-    padding:40px 20px; cursor:pointer; transition:transform .18s ease, border-color .18s, box-shadow .18s; outline:none;
-    position:relative; overflow:hidden; transform-style:preserve-3d;
-    box-shadow:0 24px 46px rgba(0,0,0,.6), 0 0 30px rgba(34,229,132,.10), inset 0 0 26px rgba(34,229,132,.05)}
-  .drop::before{content:''; position:absolute; inset:13px; border:1.5px dashed rgba(43,255,158,.30); border-radius:14px; pointer-events:none}
-  .drop::after{content:''; position:absolute; top:-1px; left:50%; transform:translateX(-50%); width:130px; height:2px;
-    background:linear-gradient(90deg,transparent,var(--neon),transparent); box-shadow:0 0 14px var(--neon)}
+  .drop{border:1px solid var(--line); border-radius:18px; background:linear-gradient(165deg,#0c1710,#070d09);
+    padding:42px 20px 36px; cursor:pointer; position:relative; overflow:hidden;
+    box-shadow:0 16px 36px rgba(0,0,0,.45);
+    transition:transform .25s cubic-bezier(.22,.8,.3,1), border-color .25s, box-shadow .25s}
+  .drop::before{content:''; position:absolute; inset:12px; border:1.5px dashed rgba(43,255,158,.22); border-radius:12px; pointer-events:none;
+    transition:border-color .25s}
   .drop>*{position:relative; z-index:1}
-  .drop:hover,.drop:focus{border-color:rgba(43,255,158,.65); box-shadow:0 24px 46px rgba(0,0,0,.6), 0 0 44px rgba(34,229,132,.20), inset 0 0 26px rgba(34,229,132,.07)}
-  .drop.over{border-color:var(--neon); box-shadow:0 0 0 3px rgba(43,255,158,.25), 0 0 54px rgba(34,229,132,.30), inset 0 0 44px rgba(34,229,132,.12)}
-  .drop .big{width:94px; height:94px; margin:0 auto; display:flex; align-items:center; justify-content:center; font-size:46px; border-radius:50%;
-    background:radial-gradient(circle at 32% 28%, #1e4630, #0a1a10 70%);
-    border:1px solid rgba(43,255,158,.45);
-    animation:floaty 3.6s ease-in-out infinite, pulseGlow 2.8s ease-in-out infinite; transform:translateZ(38px)}
-  .drop h2{font-size:23px; margin-top:16px; transform:translateZ(26px); letter-spacing:.3px; text-shadow:0 0 16px rgba(43,255,158,.25)}
-  .drop p{color:var(--muted); margin-top:8px; font-size:15px; transform:translateZ(18px)}
-  @keyframes floaty{0%,100%{margin-top:0}50%{margin-top:-8px}}
-  @keyframes pulseGlow{0%,100%{box-shadow:0 0 18px rgba(43,255,158,.25), inset 0 0 16px rgba(43,255,158,.12)}50%{box-shadow:0 0 34px rgba(43,255,158,.50), inset 0 0 22px rgba(43,255,158,.20)}}
-  .btn{display:inline-block; margin-top:18px; background:linear-gradient(92deg,#13c76d,#2bff9e); color:#02130a; font-weight:800;
-    padding:13px 28px; font-size:16px; border:none; cursor:pointer; letter-spacing:.4px;
-    clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);
-    box-shadow:0 0 24px rgba(43,255,158,.35); transition:filter .15s, transform .1s; transform:translateZ(30px)}
-  .btn:hover{filter:brightness(1.1)}
-  .btn:active{transform:translateY(2px)}
-  .formats{color:#7debb6; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:11.5px; letter-spacing:1.2px; text-transform:uppercase; margin-top:16px; opacity:.85}
-  #batchbar{display:none; width:100%; max-width:880px; margin-top:18px;
-    background:linear-gradient(160deg, rgba(19,40,27,.9), rgba(6,12,9,.94));
-    border:1px solid rgba(43,255,158,.4); border-radius:18px; padding:14px 16px; align-items:center; gap:14px; flex-wrap:wrap; text-align:left;
-    box-shadow:0 18px 38px rgba(0,0,0,.55), 0 0 28px rgba(34,229,132,.14), inset 0 0 18px rgba(34,229,132,.05)}
+  .drop:hover{transform:translateY(-3px); border-color:rgba(43,255,158,.45); box-shadow:0 22px 44px rgba(0,0,0,.5), 0 0 24px rgba(34,229,132,.08)}
+  .drop:hover::before{border-color:rgba(43,255,158,.4)}
+  .drop.over{border-color:var(--neon); box-shadow:0 0 0 3px rgba(43,255,158,.18), 0 22px 44px rgba(0,0,0,.5)}
+  .drop .big{width:84px; height:84px; margin:0 auto; display:flex; align-items:center; justify-content:center; font-size:42px; border-radius:50%;
+    background:radial-gradient(circle at 34% 28%, #1b4030, #0a1a10 72%); border:1px solid rgba(43,255,158,.35);
+    box-shadow:0 10px 22px rgba(0,0,0,.45), inset 0 0 14px rgba(34,229,132,.10);
+    animation:floaty 4.5s ease-in-out infinite; will-change:transform}
+  @keyframes floaty{0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)}}
+  .drop h2{font-size:22px; margin-top:16px; letter-spacing:.2px}
+  .drop p{color:var(--muted); margin-top:7px; font-size:14.5px}
+  .btn{display:inline-block; margin-top:18px; background:linear-gradient(92deg,#15cf71,#2bff9e); color:#02130a; font-weight:800;
+    padding:12px 26px; font-size:15.5px; border:none; border-radius:12px; cursor:pointer; letter-spacing:.2px;
+    box-shadow:0 8px 20px rgba(20,180,100,.28); transition:filter .2s, transform .15s}
+  .btn:hover{filter:brightness(1.08)}
+  .btn:active{transform:scale(.98)}
+  .formats{color:#79dcae; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:11px;
+    letter-spacing:1.4px; text-transform:uppercase; margin-top:16px; opacity:.8}
+  #batchbar{display:none; width:100%; margin-top:18px; background:linear-gradient(165deg,#0c1710,#070d09);
+    border:1px solid rgba(43,255,158,.35); border-radius:16px; padding:14px 16px; align-items:center; gap:14px; flex-wrap:wrap; text-align:left;
+    box-shadow:0 14px 30px rgba(0,0,0,.45)}
   #batchbar.show{display:flex}
   #batchbar .binfo{flex:1; font-weight:700; min-width:200px}
   #batchbar .binfo small{display:block; color:var(--muted); font-weight:500; margin-top:2px}
-  .zipbtn{background:linear-gradient(92deg,#13c76d,#2bff9e); color:#02130a; font-weight:800; border:none; padding:13px 22px; cursor:pointer; font-size:15px; white-space:nowrap; letter-spacing:.3px;
-    clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
-    box-shadow:0 0 22px rgba(43,255,158,.30); transition:filter .15s, transform .1s}
-  .zipbtn:hover{filter:brightness(1.1)}
-  .zipbtn:active{transform:translateY(2px)}
-  .zipbtn:disabled{background:#1d2b21; color:var(--muted); cursor:default; box-shadow:none; clip-path:none; border-radius:10px}
-  #results{width:100%; max-width:880px; margin-top:26px; display:flex; flex-direction:column; gap:14px}
-  .card{background:linear-gradient(160deg, rgba(17,34,24,.88), rgba(7,13,10,.94)); border:1px solid rgba(43,255,158,.20); border-radius:18px; padding:16px; display:flex; gap:16px; align-items:flex-start; text-align:left;
-    box-shadow:0 16px 32px rgba(0,0,0,.5), 0 0 18px rgba(34,229,132,.06), inset 0 0 14px rgba(34,229,132,.04)}
-  .card img,.card video{width:76px; height:76px; object-fit:cover; border-radius:12px; border:1px solid rgba(43,255,158,.3); background:#000;
-    box-shadow:0 0 14px rgba(34,229,132,.15)}
-  .card .vthumb{width:76px; height:76px; border-radius:12px; border:1px solid rgba(43,255,158,.3); background:#000; display:flex; align-items:center; justify-content:center; font-size:34px; flex:none}
+  .zipbtn{background:linear-gradient(92deg,#15cf71,#2bff9e); color:#02130a; font-weight:800; border:none; border-radius:12px;
+    padding:12px 20px; cursor:pointer; font-size:15px; white-space:nowrap; box-shadow:0 8px 20px rgba(20,180,100,.28);
+    transition:filter .2s, transform .15s}
+  .zipbtn:hover{filter:brightness(1.08)}
+  .zipbtn:active{transform:scale(.98)}
+  .zipbtn:disabled{background:#1a261e; color:var(--muted); cursor:default; box-shadow:none}
+  #results{width:100%; margin-top:24px; display:flex; flex-direction:column; gap:12px}
+  .card{background:linear-gradient(165deg,#0b140f,#070d09); border:1px solid var(--line); border-radius:16px; padding:15px;
+    display:flex; gap:15px; align-items:flex-start; text-align:left; box-shadow:0 12px 26px rgba(0,0,0,.4);
+    animation:fadeUp .45s cubic-bezier(.22,.8,.3,1) both}
+  .card img,.card video{width:72px; height:72px; object-fit:cover; border-radius:12px; border:1px solid rgba(43,255,158,.22); background:#000}
+  .card .vthumb{width:72px; height:72px; border-radius:12px; border:1px solid rgba(43,255,158,.22); background:#000; display:flex; align-items:center; justify-content:center; font-size:32px; flex:none}
   .card .body{flex:1; min-width:0}
   .card .name{font-weight:700; word-break:break-all}
-  .card .sizes{color:var(--muted); font-size:13px; margin-top:3px; font-family:ui-monospace,Menlo,Consolas,monospace}
+  .card .sizes{color:var(--muted); font-size:12.5px; margin-top:3px; font-family:ui-monospace,Menlo,Consolas,monospace}
   .chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:9px}
-  .chip{font-size:12px; border:1px solid rgba(43,255,158,.4); color:#b9f4d2; background:rgba(20,60,38,.35); padding:4px 9px; border-radius:999px}
-  .chip.safe{border-color:var(--line); color:var(--muted); background:transparent}
+  .chip{font-size:12px; border:1px solid rgba(43,255,158,.35); color:#b9f4d2; background:rgba(20,60,38,.3); padding:4px 9px; border-radius:999px}
+  .chip.safe{border-color:rgba(255,255,255,.12); color:var(--muted); background:transparent}
   .status{margin-top:10px; font-weight:700}
-  .status.done{color:var(--neon); text-shadow:0 0 12px rgba(43,255,158,.45)}
+  .status.done{color:var(--neon)}
   .status.err{color:#ff7b72}
   .spin{display:inline-block; animation:rot 1s linear infinite}
   @keyframes rot{to{transform:rotate(360deg)}}
-  .dl{background:linear-gradient(92deg,#13c76d,#2bff9e); color:#02130a; font-weight:800; border:none; padding:12px 20px; cursor:pointer; font-size:15px; white-space:nowrap; letter-spacing:.3px;
-    clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
-    box-shadow:0 0 20px rgba(43,255,158,.30); transition:filter .15s, transform .1s}
-  .dl:hover{filter:brightness(1.1)}
-  .dl:active{transform:translateY(2px)}
-  footer{max-width:880px; color:var(--muted); font-size:13px; text-align:center; margin-top:38px; line-height:1.7}
+  .dl{background:linear-gradient(92deg,#15cf71,#2bff9e); color:#02130a; font-weight:800; border:none; border-radius:12px;
+    padding:11px 18px; cursor:pointer; font-size:14.5px; white-space:nowrap; box-shadow:0 8px 18px rgba(20,180,100,.25);
+    transition:filter .2s, transform .15s}
+  .dl:hover{filter:brightness(1.08)}
+  .dl:active{transform:scale(.98)}
+  section.faqsec{width:100%; max-width:840px; margin-top:56px; text-align:left}
+  section.faqsec h2{font-size:clamp(21px,4vw,27px); font-weight:800; text-align:center; letter-spacing:-.2px}
+  section.faqsec h2 .grad{background:linear-gradient(92deg,#2bff9e,#4fe3c1); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .qa{border-top:1px solid rgba(255,255,255,.07); padding:18px 4px}
+  .qa:first-of-type{margin-top:14px}
+  .qa h3{font-size:15.5px; font-weight:700}
+  .qa p{color:var(--muted); font-size:14.5px; margin-top:6px; line-height:1.65; max-width:700px}
+  .qa p b{color:#d9ffe9}
+  footer{max-width:840px; color:var(--muted); font-size:13px; text-align:center; margin-top:44px; line-height:1.7}
   footer .lock{color:#cfe9d8}
-  section.block{width:100%; max-width:880px; margin-top:56px; text-align:left}
-  section.block h2{font-size:clamp(24px,4.5vw,34px); font-weight:900; letter-spacing:-.3px; text-align:center}
-  section.block h2 .grad{background:linear-gradient(92deg,#2bff9e,#39f5d8); -webkit-background-clip:text; background-clip:text; color:transparent;
-    filter:drop-shadow(0 0 16px rgba(43,255,158,.35))}
-  section.block .lead{color:var(--muted); text-align:center; margin:10px auto 24px; max-width:600px; font-size:15px}
-  .story{display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:10px; align-items:stretch}
-  @media(max-width:720px){.story{grid-template-columns:1fr} .story .sarrow{transform:rotate(90deg); justify-self:center}}
-  .scard{position:relative; border:1px solid rgba(43,255,158,.22); border-radius:18px; padding:22px 16px; text-align:center;
-    display:flex; flex-direction:column; align-items:center;
-    box-shadow:0 20px 40px rgba(0,0,0,.55), 0 0 20px rgba(34,229,132,.07), inset 0 0 16px rgba(34,229,132,.04);
-    transform-style:preserve-3d; transition:transform .18s ease}
-  .scard::after{content:''; position:absolute; top:-1px; left:50%; transform:translateX(-50%); width:84px; height:2px;
-    background:linear-gradient(90deg,transparent,var(--neon),transparent); box-shadow:0 0 11px var(--neon)}
-  .scard.tone1{background:linear-gradient(160deg, rgba(13,32,20,.92), rgba(6,12,9,.95))}
-  .scard.tone2{background:linear-gradient(160deg, rgba(23,92,54,.92), rgba(9,26,16,.95)); border-color:rgba(43,255,158,.5);
-    box-shadow:0 20px 40px rgba(0,0,0,.55), 0 0 34px rgba(34,229,132,.22), inset 0 0 20px rgba(34,229,132,.08)}
-  .scard.tone3{background:linear-gradient(160deg, rgba(16,40,26,.92), rgba(7,14,10,.95))}
-  .scard .ic{width:70px; height:70px; margin:0 auto; display:flex; align-items:center; justify-content:center; font-size:32px; border-radius:50%;
-    background:radial-gradient(circle at 32% 28%, #1e4630, #0a1a10 70%); border:1px solid rgba(43,255,158,.45);
-    animation:floaty 3.9s ease-in-out infinite, pulseGlow 3.1s ease-in-out infinite}
-  .scard h3{font-size:16px; margin-top:12px}
-  .scard p{color:var(--muted); font-size:13.5px; margin-top:6px; line-height:1.55; flex:1}
-  .badge{display:inline-block; margin-top:12px; font-size:12.5px; font-weight:800; padding:6px 12px; border-radius:999px}
-  .badge.red{background:rgba(255,90,80,.12); color:#ff9d94; border:1px solid rgba(255,90,80,.4)}
-  .badge.green{background:rgba(34,229,132,.14); color:var(--neon); border:1px solid rgba(43,255,158,.5); box-shadow:0 0 12px rgba(43,255,158,.2)}
-  .badge.grey{background:rgba(255,255,255,.05); color:#cfe9d8; border:1px solid var(--line)}
-  .sarrow{align-self:center; font-size:22px; color:var(--neon); text-shadow:0 0 12px rgba(43,255,158,.7)}
-  .demo-wrap{text-align:center; margin-top:22px}
-  .faq{display:grid; gap:12px}
-  .qa{background:linear-gradient(160deg, rgba(15,30,20,.88), rgba(7,13,10,.94)); border:1px solid rgba(43,255,158,.16); border-radius:16px; padding:18px;
-    box-shadow:0 14px 28px rgba(0,0,0,.45), inset 0 0 12px rgba(34,229,132,.03)}
-  .qa h3{font-size:16.5px}
-  .qa p{color:var(--muted); font-size:14.5px; margin-top:7px; line-height:1.65}
-  .qa p b, .qa h3 b{color:#d9ffe9}
-  ::selection{background:rgba(43,255,158,.35)}
+  ::selection{background:rgba(43,255,158,.32)}
   :focus-visible{outline:2px solid var(--neon); outline-offset:3px; border-radius:8px}
-  .drop:active{transform:scale(.995)}
   @media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important}}
 </style>
 </head>
@@ -172,50 +125,27 @@
 </header>
 
 <main>
-  <h1>Photo Se <span class="grad">AI Tag Hatao.</span></h1>
-  <p class="sub">India ka apna <b>free AI Tag Remover</b> — photo ya video dalo, saare chhupe AI tags aur metadata saaf. <b>Koi limit nahi</b> — ek saath kai files, ZIP download ke sath.</p>
-  <div class="trust">
-    <span>✅ Free Forever — No Limit</span><span>🚫 No Sign-up</span><span>🎬 Photo + Video</span><span>🔒 No Upload — file phone se bahar nahi jati</span><span>🇮🇳 Made for India</span>
+  <h1 class="fadeup">Photo Se <span class="grad">AI Tag Hatao.</span></h1>
+  <p class="sub fadeup d1">India ka apna <b>free AI Tag Remover</b> — photo ya video dalo, chhupe AI tags aur metadata saaf. <b>Koi limit nahi, koi sign-up nahi.</b></p>
+  <div class="trust fadeup d2">
+    <span>✅ 100% Free — No Limit</span><span>🔒 No Upload — files device se bahar nahi jati</span><span>🇮🇳 Made for India</span>
   </div>
 
-  <div class="steps">
-    <div class="stepcard">
-      <div class="snum">1</div>
-      <div class="sic">📥</div>
-      <h3>Files Dalo</h3>
-      <p>Photo ya video — sahi wale box me dalo</p>
-    </div>
-    <div class="sarrow2">➜</div>
-    <div class="stepcard">
-      <div class="snum">2</div>
-      <div class="sic">⚙️</div>
-      <h3>Auto Process</h3>
-      <p>AI tag aur metadata apne aap saaf</p>
-    </div>
-    <div class="sarrow2">➜</div>
-    <div class="stepcard">
-      <div class="snum">3</div>
-      <div class="sic">💥</div>
-      <h3>Boom! Clean Ready</h3>
-      <p>Download karo — ya saari ek ZIP me</p>
-    </div>
-  </div>
-
-  <div class="tools">
-    <div class="drop tilt" id="dropPhoto" tabindex="0" role="button" aria-label="Drop photo or tap to choose">
+  <div class="tools fadeup d2">
+    <div class="drop" id="dropPhoto" tabindex="0" role="button" aria-label="Drop photo or tap to choose">
       <div class="big">🖼️</div>
       <h2>Photo dalo</h2>
       <p>Photo ka AI tag saaf karne ke liye</p>
       <button class="btn" id="pickPhoto" type="button">Choose Photo</button>
-      <div class="formats">JPG · PNG · WebP — ek ya kai photo ek saath</div>
+      <div class="formats">JPG · PNG · WebP</div>
       <input type="file" id="filePhoto" accept="image/jpeg,image/png,image/webp" multiple hidden>
     </div>
-    <div class="drop tilt" id="dropVideo" tabindex="0" role="button" aria-label="Drop video or tap to choose">
+    <div class="drop" id="dropVideo" tabindex="0" role="button" aria-label="Drop video or tap to choose">
       <div class="big">🎬</div>
       <h2>Video dalo</h2>
       <p>Video ka metadata saaf karne ke liye</p>
       <button class="btn" id="pickVideo" type="button">Choose Video</button>
-      <div class="formats">MP4 · MOV — quality bilkul waisi ki waisi</div>
+      <div class="formats">MP4 · MOV — quality same</div>
       <input type="file" id="fileVideo" accept="video/mp4,video/quicktime,.mp4,.mov,.m4v" multiple hidden>
     </div>
   </div>
@@ -227,65 +157,23 @@
 
   <div id="results"></div>
 
-  <section class="block" id="example">
-    <h2>Dekho khud — <span class="grad">ek asal example</span></h2>
-    <p class="lead">AI photo ke andar ek chhupa hua tag hota hai. Platforms upload ke time wahi tag padhte hain. TagHatao use hatata hai — phir file saaf.</p>
-    <div class="story">
-      <div class="scard tilt tone1">
-        <div class="ic">🤖🖼️</div>
-        <h3>1 · AI Photo</h3>
-        <p>ChatGPT / Gemini / Midjourney se bani photo ke andar AI tag chipa hota hai — dikhai nahi deta.</p>
-        <span class="badge red">🔴 File me AI tag hai</span>
-      </div>
-      <div class="sarrow">➜</div>
-      <div class="scard tilt tone2">
-        <div class="ic">🧹✨</div>
-        <h3>2 · TagHatao Clean</h3>
-        <p>Photo ya video yahan dalo — AI tag, C2PA, EXIF, prompt, sab metadata seconds me saaf.</p>
-        <span class="badge grey">⚙️ Auto process</span>
-      </div>
-      <div class="sarrow">➜</div>
-      <div class="scard tilt tone3">
-        <div class="ic">📤✅</div>
-        <h3>3 · Upload Ready</h3>
-        <p>Clean file dobara scan karke verify hoti hai. Ab Instagram, Facebook, kahin bhi upload karo — file ke andar koi AI tag nahi.</p>
-        <span class="badge green">🟢 No AI tags in file</span>
-      </div>
+  <section class="faqsec">
+    <h2>Aksar puche jaane wale <span class="grad">sawal</span></h2>
+    <div class="qa">
+      <h3>Photo ya video se AI tag kaise saaf hota hai?</h3>
+      <p>Bas file upar wale sahi box me dalo — baaki kaam apne aap. TagHatao file ke andar chhupe <b>AI tags, C2PA Content Credentials, EXIF, GPS, prompt aur workflow</b> saaf karke clean file deta hai, aur use dobara scan karke verify bhi karta hai. Kai files ek saath dalo to sab ki ek <b>ZIP</b> bhi ban jati hai.</p>
     </div>
-    <div class="demo-wrap">
-      <button class="btn" id="demoBtn" type="button">▶ Example khud chalao — ek AI photo saaf karke dekho</button>
-      <p class="lead" style="margin-top:12px">Upar wale box me asal example photo apne aap dalegi aur clean hokar result dikhega.</p>
+    <div class="qa">
+      <h3>Instagram par "AI info" label kyun aata hai?</h3>
+      <p>ChatGPT, Gemini jaise AI tools file ke andar <b>C2PA aur IPTC AI tags</b> chipka dete hain. Instagram upload ke time yehi tags padh kar label lagata hai — isliye upload se pehle file saaf karna kaam aata hai.</p>
     </div>
-  </section>
-
-  <section class="block" id="guide">
-    <h2>Photo se AI tag <span class="grad">kaise hataye?</span></h2>
-    <p class="lead">Bas 3 step — koi app nahi, koi sign-up nahi, koi limit nahi.</p>
-    <div class="faq">
-      <div class="qa">
-        <h3>📥 Step 1 — Files dalo</h3>
-        <p>Upar <b>do alag box</b> hain — photo ke liye <b>Photo wala box</b>, video ke liye <b>Video wala box</b>. Apni file sahi box me drag karo ya button dabao. JPG, PNG, WebP, MP4, MOV — <b>ek saath kai files</b> dal sakte ho, sab ek-ek karke apne aap saaf hongi.</p>
-      </div>
-      <div class="qa">
-        <h3>⚙️ Step 2 — Auto clean</h3>
-        <p>Process khud shuru hota hai. TagHatao file ke andar chhupe <b>AI tags, C2PA Content Credentials, EXIF, GPS, prompt aur workflow</b> — sab metadata saaf kar deta hai, aur clean file ko dobara scan karke verify bhi karta hai. Video me quality bilkul nahi badalti — sirf metadata wala hissa saaf hota hai.</p>
-      </div>
-      <div class="qa">
-        <h3>💥 Step 3 — Download aur upload</h3>
-        <p><b>"Boom! Clean Ready"</b> aate hi Download dabao — ya kai files hain to upar wala <b>ZIP button</b> dabao, saari clean files ek hi ZIP me mil jayengi. Ab saaf files Instagram, Facebook, YouTube — jahan chaho upload karo.</p>
-      </div>
-      <div class="qa">
-        <h3>❓ Instagram par "AI info" label kyun aata hai?</h3>
-        <p>Jab tum ChatGPT, Gemini ya kisi AI tool se photo banate/edit karte ho, wo tool file ke andar <b>C2PA aur IPTC AI tags</b> chipka deta hai. Instagram jaise platforms upload ke time yehi tags padh kar label lagate hain. TagHatao upload se pehle wo file-wale tags hi saaf kar deta hai.</p>
-      </div>
-      <div class="qa">
-        <h3>🎬 Kya video ka AI tag bhi saaf hota hai?</h3>
-        <p><b>Haan.</b> MP4 aur MOV video dalo — unke andar ka metadata (title, encoder tag, XMP, C2PA wala hissa) saaf ho jata hai. Video dobara encode nahi hoti, isiliye <b>quality 100% waisi ki waisi</b> rehti hai aur process tez hota hai.</p>
-      </div>
-      <div class="qa">
-        <h3>🔒 Kya meri files kisi server par jati hain?</h3>
-        <p><b>Bilkul nahi.</b> Pura kaam tumhare phone/browser ke andar hota hai. Files device se bahar hi nahi jati — isiliye 100% private hai, aur bina account ke bilkul free hai, bina kisi limit ke.</p>
-      </div>
+    <div class="qa">
+      <h3>Kya video ki quality kharab hogi?</h3>
+      <p><b>Bilkul nahi.</b> Video dobara encode nahi hoti — sirf uske andar ka metadata wala hissa saaf hota hai, isliye quality 100% waisi ki waisi rehti hai aur process bhi tez hota hai.</p>
+    </div>
+    <div class="qa">
+      <h3>Kya meri files kisi server par jati hain?</h3>
+      <p><b>Nahi.</b> Pura kaam tumhare phone/browser ke andar hota hai — files device se bahar hi nahi jati. Isiliye ye 100% private hai, bina account ke free hai, aur koi limit bhi nahi hai.</p>
     </div>
   </section>
 </main>
@@ -486,18 +374,6 @@ function setupDrop(boxId, inputId, btnId){
 setupDrop('dropPhoto', 'filePhoto', 'pickPhoto');
 setupDrop('dropVideo', 'fileVideo', 'pickVideo');
 
-/* 3D tilt — sirf mouse wale devices par, halka sa */
-if (window.matchMedia('(hover: hover)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-  document.querySelectorAll('.tilt').forEach(el => {
-    el.addEventListener('pointermove', e => {
-      const r = el.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      el.style.transform = `perspective(850px) rotateX(${(-y*5).toFixed(2)}deg) rotateY(${(x*6).toFixed(2)}deg) translateY(-3px)`;
-    });
-    el.addEventListener('pointerleave', () => { el.style.transform = ''; });
-  });
-}
 const demoBtn = document.getElementById('demoBtn');
 if (demoBtn) demoBtn.addEventListener('click', async () => {
   demoBtn.disabled = true; demoBtn.textContent = '⏳ Example chal raha hai…';
